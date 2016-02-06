@@ -57,7 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\IWatchMeDbContext.cs" />
+    <Compile Include="Migrations\201602061612053_InitialCreate.cs" />
+    <Compile Include="Migrations\201602061612053_InitialCreate.Designer.cs">
+      <DependentUpon>201602061612053_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="WatchMeDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +77,11 @@
       <Project>{9a29dba9-31a4-4d59-9438-7de85fcb57f9}</Project>
       <Name>WatchMe.Data.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602061612053_InitialCreate.resx">
+      <DependentUpon>201602061612053_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
