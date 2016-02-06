@@ -7,11 +7,12 @@
     {
         public Movie()
         {
+            this.Id = Guid.NewGuid();
             this.Categories = new HashSet<Category>();
             this.Cast = new HashSet<Actor>();
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Title { get; set; }
 

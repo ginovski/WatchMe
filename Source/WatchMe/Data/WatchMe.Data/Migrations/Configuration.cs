@@ -6,7 +6,7 @@ namespace WatchMe.Data.Migrations
 
     using Common;
     using Models;
-
+    using System.Text;
     internal sealed class Configuration : DbMigrationsConfiguration<WatchMeDbContext>
     {
         public Configuration()
@@ -38,6 +38,9 @@ namespace WatchMe.Data.Migrations
                 {
                     Name = RandomDataGenerator.Instance.GetRandomString(5, 10)
                 };
+
+                var nameParts = newCategory.Name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var categoryIdentifier = string.Join("-", nameParts.Select(p => p.ToLower()));
 
                 context.Categories.Add(newCategory);
             }

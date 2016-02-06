@@ -13,6 +13,8 @@
 
         public string Name { get; set; }
 
+        public string CategoryIdentifier { get; set; }
+
         public virtual ICollection<Movie> Movies { get; set; }
     }
 }
