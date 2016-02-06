@@ -73,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WatchMe.Data.Common\WatchMe.Data.Common.csproj">
+      <Project>{e6de3c20-a3b0-41cf-996d-f797fe6509ef}</Project>
+      <Name>WatchMe.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WatchMe.Data.Models\WatchMe.Data.Models.csproj">
       <Project>{9a29dba9-31a4-4d59-9438-7de85fcb57f9}</Project>
       <Name>WatchMe.Data.Models</Name>
