@@ -19,7 +19,7 @@
 
         public Rating Rating { get; set; }
 
-        public int ProfileImageId { get; set; }
+        public int? ProfileImageId { get; set; }
 
         public virtual Image ProfileImage { get; set; }
 

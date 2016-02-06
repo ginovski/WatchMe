@@ -21,7 +21,7 @@
 
         public string IMDBLink { get; set; }
 
-        public int CoverImageId { get; set; }
+        public int? CoverImageId { get; set; }
 
         public virtual Image CoverImage { get; set; }
 

@@ -20,11 +20,7 @@
 
         public string LastName { get; set; }
 
-        public int RatingId { get; set; }
-
-        public virtual Rating Rating { get; set; }
-
-        public int ProfileImageId { get; set; }
+        public int? ProfileImageId { get; set; }
 
         public virtual Image ProfileImage { get; set; }
 
