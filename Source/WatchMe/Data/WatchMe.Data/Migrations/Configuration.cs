@@ -21,8 +21,79 @@ namespace WatchMe.Data.Migrations
         {
             this.SeedActors(context);
             this.SeedDirectors(context);
+            this.SeedCategories(context);
+            this.SeedMovies(context);
         }
-        
+
+        private void SeedCategories(WatchMeDbContext context)
+        {
+            if (context.Categories.Any())
+            {
+                return;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                var newCategory = new Category
+                {
+                    Name = RandomDataGenerator.Instance.GetRandomString(5, 10)
+                };
+
+                context.Categories.Add(newCategory);
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedMovies(WatchMeDbContext context)
+        {
+            if (context.Movies.Any())
+            {
+                return;
+            }
+
+            var directors = context.Directors.Take(10).ToList();
+            var actors = context.Actors.Take(20).ToList();
+            var categories = context.Categories.Take(5).ToList();
+
+            int actorIndex = 0;
+            int categoryIndex = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                var newMovie = new Movie
+                {
+                    Title = RandomDataGenerator.Instance.GetRandomString(5, 15),
+                    Duration = RandomDataGenerator.Instance.GetRandomInt(60, 120),
+                    IMDBLink = RandomDataGenerator.Instance.GetRandomString(20, 30),
+                    Rating = new Rating
+                    {
+                        Value = RandomDataGenerator.Instance.GetRandomInt(0, 5)
+                    },
+                    ReleaseDate = RandomDataGenerator.Instance
+                    .GetRandomDate(DateTime.Now.AddYears(-10), DateTime.Now.AddYears(-1)),
+                    DirectorId = directors[i].Id
+                };
+
+                for (int j = 0; j < 2; j++)
+                {
+                    newMovie.Cast.Add(actors[actorIndex]);
+                    actorIndex++;
+                }
+
+                newMovie.Categories.Add(categories[categoryIndex]);
+
+                if (i % 2 != 0)
+                {
+                    categoryIndex++;
+                }
+
+                context.Movies.Add(newMovie);
+            }
+
+            context.SaveChanges();
+        }
+
         private void SeedActors(WatchMeDbContext context)
         {
             if (context.Actors.Any())

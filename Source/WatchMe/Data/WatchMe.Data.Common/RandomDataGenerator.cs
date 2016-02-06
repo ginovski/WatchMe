@@ -55,6 +55,17 @@
             return this.GetRandomStringExact(this.random.Next(min, max + 1), charsToUse);
         }
 
+        public DateTime GetRandomDate(DateTime dateTimeStart, DateTime dateTimeEnd)
+        {
+            int randomYear = this.GetRandomInt(dateTimeStart.Year, dateTimeEnd.Year);
+            int randomMonth = this.GetRandomInt(1, 12);
+            int randomDay = this.GetRandomInt(1, 28);
+
+            var date = new DateTime(randomYear, randomMonth, randomDay);
+
+            return date;
+        }
+
         public int GetRandomInt(int min, int max)
         {
             return this.random.Next(min, max + 1);
