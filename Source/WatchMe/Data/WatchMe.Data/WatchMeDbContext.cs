@@ -1,5 +1,7 @@
 ﻿namespace WatchMe.Data
 {
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
 
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -57,6 +59,10 @@
                 .HasRequired(d => d.Rating)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Properties<Guid>()
+           .Where(info => info.Name.ToLower() == "id")
+           .Configure(configuration => configuration.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity));
         }
     }
 }
