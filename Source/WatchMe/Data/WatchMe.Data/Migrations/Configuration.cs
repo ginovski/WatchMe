@@ -19,10 +19,10 @@ namespace WatchMe.Data.Migrations
 
         protected override void Seed(WatchMeDbContext context)
         {
-            this.SeedActors(context);
-            this.SeedDirectors(context);
-            this.SeedCategories(context);
-            this.SeedMovies(context);
+            //this.SeedActors(context);
+            //this.SeedDirectors(context);
+            //this.SeedCategories(context);
+            //this.SeedMovies(context);
         }
 
         private void SeedCategories(WatchMeDbContext context)
