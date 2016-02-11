@@ -1,5 +1,6 @@
 ﻿namespace WatchMe.Web
 {
+    using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
@@ -11,7 +12,7 @@
         protected void Application_Start()
         {
             var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute();
+            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
