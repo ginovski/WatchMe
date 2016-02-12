@@ -28,11 +28,45 @@ textarea {
     margin-bottom: 15px;
 }
 
-.category-label .label:hover {
-    background-color: #ddd;
-    color: #444;
+    .category-label .label:hover {
+        background-color: #ddd;
+        color: #444;
+    }
+
+    .category-label a:hover {
+        text-decoration: none;
+    }
+
+.rate {
+    display: block;
+    float: left;
+    height: auto;
 }
 
-.category-label a:hover {
-    text-decoration: none;
+    .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
+
+        .rate:not(:checked) > label:before {
+            content: '★ ';
+        }
+
+    .rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+
+.more-details {
+    position: absolute;
+    top: 100%;
 }
