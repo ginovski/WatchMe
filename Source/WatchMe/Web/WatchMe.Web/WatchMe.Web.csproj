@@ -302,6 +302,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Actors\" />
+    <Folder Include="Images\Directors\" />
+    <Folder Include="Images\Movies\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
