@@ -16,9 +16,9 @@
 
         public string Title { get; set; }
 
-        public int Duration { get; set; }
+        public int? Duration { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
 
         public string IMDBLink { get; set; }
 
