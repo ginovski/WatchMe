@@ -20,6 +20,11 @@ namespace WatchMe.Data.Migrations
 
         protected override void Seed(WatchMeDbContext context)
         {
+            if (context.Movies.Any())
+            {
+                return;
+            }
+
             var fetcher = new MoviesFetcher();
 
             fetcher.FetchMovies(context, 5);

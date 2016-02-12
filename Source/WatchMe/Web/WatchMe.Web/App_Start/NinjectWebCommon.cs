@@ -10,21 +10,27 @@ namespace WatchMe.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
 
-    public static class NinjectWebCommon 
+    using Data.Contracts;
+    using Data;
+    using Data.Repositories;
+    using Common;
+    using Services.Data.Contracts;
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -32,7 +38,7 @@ namespace WatchMe.Web.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -61,6 +67,16 @@ namespace WatchMe.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<IWatchMeDbContext>().To<WatchMeDbContext>();
+            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+
+            kernel.Bind(k => k
+                .From(
+                    WebConstants.DataServicesAssembly)
+                .SelectAllClasses()
+                .InheritedFrom<IService>()
+                .BindDefaultInterface());
+        }
     }
 }
+

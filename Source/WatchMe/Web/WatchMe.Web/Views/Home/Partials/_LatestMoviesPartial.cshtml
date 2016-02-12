@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WatchMe.Web.ViewModels.Home.LatestMoviesViewModel>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-4">
+            <img src="@movie.ImagePath" />
+            <h3>@movie.Title</h3>
+            <p class="text-muted">@string.Join(", ", movie.Categories)</p>
+            @Html.ActionLink("More details", "Details", "Movies", new { id = movie.Id }, null)
+        </div>
+    }
+</div>
