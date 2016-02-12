@@ -17,6 +17,7 @@ namespace WatchMe.Web.App_Start
     using Data.Repositories;
     using Common;
     using Services.Data.Contracts;
+    using Services.Common;
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

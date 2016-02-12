@@ -8,10 +8,12 @@
     public class HomeController : Controller
     {
         private IMoviesService moviesService;
+        private ICategoriesService categoriesService;
 
-        public HomeController(IMoviesService moviesService)
+        public HomeController(IMoviesService moviesService, ICategoriesService categoriesService)
         {
             this.moviesService = moviesService;
+            this.categoriesService = categoriesService;
         }
 
         public ActionResult Index()
@@ -29,6 +31,14 @@
                 .ToList();
 
             return PartialView("Partials/_LatestMoviesPartial", latestThreeMovies);
+        }
+
+        [ChildActionOnly]
+        public ActionResult AllCategories()
+        {
+            var allCategories = this.categoriesService.AllCategories().To<CategoryViewModel>().ToList();
+
+            return PartialView("Partials/_AllCategoriesPartial", allCategories);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace WatchMe.Services.Data.Contracts
+﻿namespace WatchMe.Services.Common
 {
     public interface IService
     {

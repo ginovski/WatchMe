@@ -9,9 +9,20 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Latest</h3>
+        <h4>Latest</h4>
     </div>
     <div class="panel-body text-center">
-                @Html.Action("LatestMovies")
+        @Html.Action("LatestMovies")
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Categories</h4>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            @Html.Action("AllCategories")
+        </div>
     </div>
 </div>
