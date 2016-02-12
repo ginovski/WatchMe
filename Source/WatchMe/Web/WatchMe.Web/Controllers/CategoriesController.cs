@@ -25,7 +25,6 @@
             return RedirectToActionPermanent("Details");
         }
 
-        [Route("CategoryDetails")]
         public ActionResult Details(string id, int page = 1)
         {
             var count = this.moviesService.MoviesInCategoryCount(id);

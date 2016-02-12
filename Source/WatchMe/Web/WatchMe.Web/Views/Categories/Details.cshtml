@@ -38,7 +38,19 @@
             </li>
             @for (int i = 1; i <= ViewBag.Count; i++)
             {
-                <li><a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a></li>
+                if (i == ViewBag.Page)
+                {
+                    <li class="active">
+                        <a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a>
+                    </li>
+                }
+
             }
             <li>
                 @if (ViewBag.Page < ViewBag.Count)
