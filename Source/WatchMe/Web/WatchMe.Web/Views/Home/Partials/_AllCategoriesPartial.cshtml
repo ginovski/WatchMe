@@ -1,0 +1,10 @@
+﻿@model IList<WatchMe.Web.ViewModels.Home.CategoryViewModel>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <div class="col-md-3 col-sm-4 col-xs-6 category-label">
+        <a href="/Categories/@Model[i].CategoryIdentifier">
+            <span class="label label-default">@Model[i].Name</span>
+        </a>
+    </div>
+}

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Welcome to WatchMe</h1>
+    <p class="text-center">Social network for movie fans.</br> Currently in development</p>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Latest</h4>
+    </div>
+    <div class="panel-body text-center">
+        @Html.Action("LatestMovies")
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Categories</h4>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            @Html.Action("AllCategories")
+        </div>
+    </div>
+</div>

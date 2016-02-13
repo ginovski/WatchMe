@@ -1,0 +1,62 @@
+﻿@model WatchMe.Web.ViewModels.Movies.MovieViewModel
+<div class="movie-wrapper">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>@Model.Title (@Model.ReleaseDate.Value.Year)</h3>
+        </div>
+        <div class="col-md-8">
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="5">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="4">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="3">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="2">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="1">1 star</label>
+            </div>
+        </div>
+    </div>
+    <div class="row title-info">
+        <div class="col-md-2">
+            <p class="text-muted">@Model.Duration min</p>
+        </div>
+        <div class="col-md-3">
+            <p class="text-muted">@string.Join(", ", Model.Categories)</p>
+        </div>
+        <div class="col-md-2">
+            <p class="text-muted">@Html.DisplayFor(m => m.ReleaseDate.Value)</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="@Model.ImagePath" />
+        </div>
+        <div class="col-md-4">
+            <p class="overview">Overview coming soon...</p>
+            <p class="director"><strong>Director: </strong>@Model.DirectorFullName</p>
+            <p class="few-stars"><strong>Stars: </strong>@string.Join(", ", Model.Cast.Select(m => m.FullName).Take(3))</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="cast">
+                <h3>Cast</h3>
+                <table class="table table-striped" style="border: 1px solid #dfd7ca">
+                    @foreach (var actor in Model.Cast)
+                    {
+                        <tr class="actor">
+                            <td>
+                                <img src="@actor.ImagePath" width="50" />
+                                <strong class="name">@actor.FullName</strong>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
