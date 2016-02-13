@@ -314,6 +314,7 @@
     <Content Include="Views\Home\Partials\_AllCategoriesPartial.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Categories\Partials\_SidebarAllCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

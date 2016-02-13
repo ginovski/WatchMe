@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WatchMe.Web.ViewModels.Home.CategoryViewModel>
+
+<h3>Categories</h3>
+<ul class="nav nav-sidebar">
+    @foreach (var category in Model)
+    {
+        if ((string)TempData["CategoryIdentifier"] == category.CategoryIdentifier)
+        {
+            <li class="active">@Html.ActionLink(category.Name, "Details", "Categories", new { id = category.CategoryIdentifier }, null)</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink(category.Name, "Details", "Categories", new { id = category.CategoryIdentifier }, null)</li>
+        }
+    }
+</ul>
