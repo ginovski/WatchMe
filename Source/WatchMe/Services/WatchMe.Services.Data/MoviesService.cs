@@ -27,6 +27,13 @@
             return latestReleasedMovies;
         }
 
+        public Movie MovieById(string id)
+        {
+            var movie = this.movies.GetById(new Guid(id));
+
+            return movie;
+        }
+
         public IQueryable<Movie> MoviesInCategory(string id, int page = 0, int pageSize = 10)
         {
             var moviesInCategory = this.movies
