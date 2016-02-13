@@ -1,0 +1,75 @@
+﻿@using WatchMe.Web.Common.Extensions
+@model IEnumerable<WatchMe.Web.ViewModels.Categories.CategoryMovieViewModel>
+<div>
+    <h1>@string.Join(" ", ((string)ViewBag.CategoryIdentifier).Split('-')).ToTitleString()</h1>
+    @foreach (var movie in Model)
+    {
+        <div class="category-movie">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="@movie.ImagePath" />
+                        </div>
+                        <div class="col-md-6">
+                            <h3>@movie.Title</h3>
+                            <p>@string.Join(", ", movie.Categories)</p>
+                            <p><strong>Director: </strong> @movie.DirectorFullName</p>
+                            <p><strong>Duration: </strong> @movie.Duration min</p>
+                            <p><strong>Release Date: </strong> @movie.ReleaseDate.Value.ToString("dd MMM yyyy")</p>
+                            <p><strong>Rating: </strong> @movie.Rating / 5</p>
+                            <a class="btn btn-success more-details" href="Movies/Details/@movie.Id">More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <nav>
+        <ul class="pagination">
+            <li>
+                @if (ViewBag.Page > 1)
+                {
+                    <a href="/Categories/@ViewBag.CategoryIdentifier?page=@(ViewBag.Page - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                }
+
+            </li>
+            @for (int i = 1; i <= ViewBag.Count; i++)
+            {
+                if (i == ViewBag.Page)
+                {
+                    <li class="active">
+                        <a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a>
+                    </li>
+                }
+
+            }
+            <li>
+                @if (ViewBag.Page < ViewBag.Count)
+                {
+                    <a href="/Categories/@ViewBag.CategoryIdentifier?page=@(ViewBag.Page + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                }
+            </li>
+        </ul>
+    </nav>
+</div>
+
+@section scripts{
+    <script>
+        $("a").on("click", function (event) {
+            if ($(this).is("[disabled]")) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}
