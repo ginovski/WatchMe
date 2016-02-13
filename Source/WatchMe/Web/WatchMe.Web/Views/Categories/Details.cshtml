@@ -1,7 +1,7 @@
 ﻿@using WatchMe.Web.Common.Extensions
 @model IEnumerable<WatchMe.Web.ViewModels.Categories.CategoryMovieViewModel>
 <div>
-    <h1>@string.Join(" ", ((string)ViewBag.CategoryIdentifier).Split('-')).ToTitleString()</h1>
+    <h1>@string.Join(" ", ((string)TempData["CategoryIdentifier"]).Split('-')).ToTitleString()</h1>
     @foreach (var movie in Model)
     {
         <div class="category-movie">
@@ -25,44 +25,55 @@
             </div>
         </div>
     }
-    <nav>
-        <ul class="pagination">
-            <li>
-                @if (ViewBag.Page > 1)
+    @if (Model.Count() > 0)
+    { 
+        <nav>
+            <ul class="pagination">
+                <li>
+                    @if (ViewBag.Page > 1)
                 {
-                    <a href="/Categories/@ViewBag.CategoryIdentifier?page=@(ViewBag.Page - 1)" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                }
+                        <a href="/Categories/@TempData["CategoryIdentifier"]?page=@(ViewBag.Page - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    }
 
-            </li>
-            @for (int i = 1; i <= ViewBag.Count; i++)
-            {
-                if (i == ViewBag.Page)
+                </li>
+                @for (int i = 1; i <= ViewBag.Count; i++)
                 {
-                    <li class="active">
-                        <a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a>
-                    </li>
-                }
-                else
-                {
-                    <li>
-                        <a href="/Categories/@ViewBag.CategoryIdentifier?page=@i">@i</a>
-                    </li>
-                }
+                    if (i == ViewBag.Page)
+                    {
+                        <li class="active">
+                            <a href="/Categories/@TempData["CategoryIdentifier"]?page=@i">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Categories/@TempData["CategoryIdentifier"]?page=@i">@i</a>
+                        </li>
+                    }
 
-            }
-            <li>
-                @if (ViewBag.Page < ViewBag.Count)
-                {
-                    <a href="/Categories/@ViewBag.CategoryIdentifier?page=@(ViewBag.Page + 1)" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
                 }
-            </li>
-        </ul>
-    </nav>
+                <li>
+                    @if (ViewBag.Page < ViewBag.Count)
+                {
+                        <a href="/Categories/@TempData["CategoryIdentifier"]?page=@(ViewBag.Page + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    }
+                </li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+           <h2 class="text-muted">Choose a category from the sidebar</h2>
+    }
 </div>
+
+@section sidebar {
+    @Html.Action("All")
+}
 
 @section scripts{
     <script>
