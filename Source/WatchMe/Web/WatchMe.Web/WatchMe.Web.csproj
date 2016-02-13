@@ -241,6 +241,8 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Movies\MovieCastViewModel.cs" />
+    <Compile Include="ViewModels\Movies\MovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -314,7 +316,7 @@
     <Content Include="Views\Home\Partials\_LatestMoviesPartial.cshtml" />
     <Content Include="Views\Home\Partials\_AllCategoriesPartial.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Categories\Partials\_SidebarAllCategories.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>

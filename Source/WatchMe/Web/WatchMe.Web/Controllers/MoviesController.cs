@@ -2,6 +2,8 @@
 {
     using System.Web.Mvc;
 
+    using ViewModels.Movies;
+    using Infastructure.Mapping;
     using WatchMe.Services.Data.Contracts;
 
     public class MoviesController : Controller
@@ -15,7 +17,11 @@
 
         public ActionResult Details(string id)
         {
-            return View();
+            var movie = this.moviesService.MovieById(id);
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var viewModel = mapper.Map<MovieViewModel>(movie);
+
+            return View(viewModel);
         }
     }
 }
