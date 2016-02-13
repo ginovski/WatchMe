@@ -27,79 +27,13 @@
             </div>
         </div>
     </div>
-    <div class=" body-content">
+    <div class="body-content">
         <div class="row">
             <div class="col-md-9">
                 @RenderBody()
             </div>
             <div class="col-md-3 sidebar">
-                <div class="panel panel-default">
-                    <div class="panel-body text-center">
-                        <h1>Daily Movie</h1>
-                        <img src="http://localhost:24100/Images/Movies/rUDQKHrRrjUfRoyiYII9gVOVlRZ.jpg" />
-                        <h3>Jurassic Park</h3>
-                        <p class="text-muted">Action, Adventure</p>
-                        @Html.ActionLink("More details", "Details", "Movies")
-                    </div>
-                </div>
-
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            How is My Site? 
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios">
-                                        Good
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios">
-                                        Excellent
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios">
-                                        Bed
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios">
-                                        Can Be Improved
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios">
-                                        No Comment
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="panel-footer">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Vote
-                        </button>
-                        <a href="#">View Result</a>
-                    </div>
-                </div>
+                @RenderSection("sidebar", required: false)
             </div>
         </div>
         <hr />
