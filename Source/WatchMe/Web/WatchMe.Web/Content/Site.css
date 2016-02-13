@@ -5,6 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    position: relative;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -36,7 +37,9 @@ textarea {
     .category-label a:hover {
         text-decoration: none;
     }
+
 .rate {
+    margin-top: 7px;
     display: block;
     float: left;
     height: auto;
@@ -44,7 +47,6 @@ textarea {
 
 .sidebar {
     position: static;
-    height: 100%;
     top: 51px;
     bottom: 0;
     right: 0;
@@ -57,7 +59,7 @@ textarea {
 .nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
     color: #fff;
     background-color: #428bca;
-}    
+}
 
 @media(max-width: 1040px) {
     .sidebar {
@@ -65,24 +67,24 @@ textarea {
     }
 }
 
-    .rate:not(:checked) > input {
-        position: absolute;
-        top: -9999px;
-    }
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
 
-    .rate:not(:checked) > label {
-        float: right;
-        width: 1em;
-        overflow: hidden;
-        white-space: nowrap;
-        cursor: pointer;
-        font-size: 30px;
-        color: #ccc;
-    }
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
 
-        .rate:not(:checked) > label:before {
-            content: '★ ';
-        }
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
 
     .rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label {
         color: #deb217;
@@ -91,4 +93,21 @@ textarea {
 .more-details {
     position: absolute;
     top: 100%;
+}
+
+.movie-wrapper {
+    padding: 20px;
+}
+
+.title-info p:nth-child(2) {
+    text-align: center;
+}
+
+#cast {
+    margin-top: 80px;
+}
+
+
+.actor .name {
+    margin-left: 20px;
 }
