@@ -7,5 +7,7 @@
         public const string MoviesImagesPath = "/Images/Movies";
         public const string ActorsImagesPath = "/Images/Actors";
         public const string DirectorsImagesPath = "/Images/Directors";
+
+        public const double Version = 0.1;
     }
 }

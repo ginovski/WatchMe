@@ -17,14 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("WatchMe", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("WatchMe v" + WebConstants.Version, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Categories", "Details", "Categories")</li>
+                    <li>@Html.ActionLink("Categories", "Details", "Categories", new { id = ""}, null)</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
