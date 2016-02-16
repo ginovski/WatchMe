@@ -14,5 +14,7 @@
         Movie MovieById(string id);
 
         int MoviesInCategoryCount(string id);
+
+        Movie GetDailyMovie();
     }
 }

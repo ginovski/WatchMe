@@ -3,6 +3,7 @@
     public class WebConstants
     {
         public const string DataServicesAssembly = "WatchMe.Services.Data";
+        public const string WebServicesAssembly = "WatchMe.Services.Web";
 
         public const string MoviesImagesPath = "/Images/Movies";
         public const string ActorsImagesPath = "/Images/Actors";

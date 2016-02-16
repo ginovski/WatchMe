@@ -18,6 +18,8 @@ namespace WatchMe.Web.App_Start
     using Common;
     using Services.Data.Contracts;
     using Services.Common;
+    using Services.Web.Contracts;
+    using Services.Web;
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -71,9 +73,12 @@ namespace WatchMe.Web.App_Start
             kernel.Bind<IWatchMeDbContext>().To<WatchMeDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
 
+            kernel.Bind<ICacheService>().To<HttpCacheService>();
+
             kernel.Bind(k => k
                 .From(
-                    WebConstants.DataServicesAssembly)
+                    WebConstants.DataServicesAssembly,
+                    WebConstants.WebServicesAssembly)
                 .SelectAllClasses()
                 .InheritedFrom<IService>()
                 .BindDefaultInterface());

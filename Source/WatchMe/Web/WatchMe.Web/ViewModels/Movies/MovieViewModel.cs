@@ -31,7 +31,7 @@
                 .ForMember(m => m.DirectorFullName, opt => opt.MapFrom(m => m.Director.FirstName + " " + m.Director.LastName));
 
             configuration.CreateMap<Movie, MovieViewModel>()
-                .ForMember(m => m.Categories, opt => opt.MapFrom(m => m.Categories.Select(c => c.Name).Take(3)));
+                .ForMember(m => m.Categories, opt => opt.MapFrom(m => m.Categories.Select(c => c.Name)));
 
             configuration.CreateMap<Movie, MovieViewModel>()
                 .ForMember(m => m.Rating, opt => opt.MapFrom(m => m.Rating.Value));
