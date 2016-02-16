@@ -16,14 +16,13 @@
             this.movies = movies;
         }
 
-        public Movie GetDailyMovie()
+        public IQueryable<Movie> GetDailyMovie()
         {
-            var randomDailyMovie = this.movies
+            var queryRandomDailyMovie = this.movies
                 .All()
-                .OrderBy(m => Guid.NewGuid())
-                .FirstOrDefault();
+                .OrderBy(m => Guid.NewGuid());
 
-            return randomDailyMovie;
+            return queryRandomDailyMovie;
         }
 
         public IQueryable<Movie> LatestReleasedMovies(int count)
@@ -37,11 +36,11 @@
             return latestReleasedMovies;
         }
 
-        public Movie MovieById(string id)
+        public IQueryable<Movie> MovieById(string id)
         {
-            var movie = this.movies.GetById(new Guid(id));
+            var queryMovie = this.movies.All().Where(m => m.Id == new Guid(id));
 
-            return movie;
+            return queryMovie;
         }
 
         public IQueryable<Movie> MoviesInCategory(string id, int page = 0, int pageSize = 10)

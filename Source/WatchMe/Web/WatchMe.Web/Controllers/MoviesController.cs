@@ -5,7 +5,7 @@
     using ViewModels.Movies;
     using Infastructure.Mapping;
     using WatchMe.Services.Data.Contracts;
-
+    using System.Linq;
     public class MoviesController : BaseController
     {
         private IMoviesService moviesService;
@@ -17,17 +17,16 @@
 
         public ActionResult Details(string id)
         {
-            var movie = this.moviesService.MovieById(id);
-            var viewModel = this.Mapper.Map<MovieViewModel>(movie);
+            var movie = this.moviesService.MovieById(id).To<MovieViewModel>().FirstOrDefault();
 
-            return View(viewModel);
+            return View(movie);
         }
 
         [OutputCache(Duration = 24 * 60 * 60)]
         [ChildActionOnly]
         public ActionResult DailyMovie()
         {
-            var dailyMovie =  this.Mapper.Map<DailyMovieViewModel>(this.moviesService.GetDailyMovie());
+            var dailyMovie =  this.moviesService.GetDailyMovie().To<DailyMovieViewModel>().FirstOrDefault();
 
             return PartialView("Partials/_SidebarDailyMovie", dailyMovie);
         }
