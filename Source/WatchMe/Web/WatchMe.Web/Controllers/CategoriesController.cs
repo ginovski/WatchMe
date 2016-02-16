@@ -1,15 +1,13 @@
 ﻿namespace WatchMe.Web.Controllers
 {
     using Infastructure.Mapping;
-    using Services.Data;
     using Services.Data.Contracts;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using ViewModels.Categories;
     using ViewModels.Home;
-    public class CategoriesController : Controller
+
+    public class CategoriesController : BaseController
     {
         private const int PageSize = 5;
 
@@ -22,6 +20,7 @@
             this.categoriesService = categoriesService;
         }
 
+        [OutputCache(Duration = 2 * 60 * 60)]
         [ChildActionOnly]
         public ActionResult All()
         {
