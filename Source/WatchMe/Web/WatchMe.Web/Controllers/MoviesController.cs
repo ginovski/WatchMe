@@ -23,5 +23,15 @@
 
             return View(viewModel);
         }
+
+        [ChildActionOnly]
+        public ActionResult DailyMovie()
+        {
+            var dailyMovie = this.moviesService.GetDailyMovie();
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var viewModel = mapper.Map<MovieViewModel>(dailyMovie);
+
+            return PartialView("Partials/_SidebarDailyMovie");
+        }
     }
 }

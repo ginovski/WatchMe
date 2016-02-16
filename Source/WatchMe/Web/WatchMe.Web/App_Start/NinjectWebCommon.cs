@@ -73,7 +73,8 @@ namespace WatchMe.Web.App_Start
 
             kernel.Bind(k => k
                 .From(
-                    WebConstants.DataServicesAssembly)
+                    WebConstants.DataServicesAssembly,
+                    WebConstants.WebServicesAssembly)
                 .SelectAllClasses()
                 .InheritedFrom<IService>()
                 .BindDefaultInterface());

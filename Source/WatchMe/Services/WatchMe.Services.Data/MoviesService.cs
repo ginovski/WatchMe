@@ -16,6 +16,16 @@
             this.movies = movies;
         }
 
+        public Movie GetDailyMovie()
+        {
+            var randomDailyMovie = this.movies
+                .All()
+                .OrderBy(m => Guid.NewGuid())
+                .FirstOrDefault();
+
+            return randomDailyMovie;
+        }
+
         public IQueryable<Movie> LatestReleasedMovies(int count)
         {
             var latestReleasedMovies = this.movies
