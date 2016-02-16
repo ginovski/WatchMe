@@ -328,7 +328,6 @@
     <Folder Include="Images\Actors\" />
     <Folder Include="Images\Directors\" />
     <Folder Include="Images\Movies\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

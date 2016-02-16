@@ -9,11 +9,12 @@
     using Contracts;
     using Models;
     using Migrations;
+    using Common;
 
     public class WatchMeDbContext : IdentityDbContext<User>, IWatchMeDbContext
     {
         public WatchMeDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base(DataConstants.DefaultConnectionName, throwIfV1Schema: false)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<WatchMeDbContext, Configuration>());
         }
