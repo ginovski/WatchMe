@@ -37,7 +37,7 @@
                 .ForMember(m => m.Rating, opt => opt.MapFrom(m => m.Rating.Value));
 
             configuration.CreateMap<Movie, MovieViewModel>()
-              .ForMember(c => c.ImagePath, opt => opt.MapFrom(c => WebConstants.MoviesImagesPath + c.CoverImage.Path));
+              .ForMember(c => c.ImagePath, opt => opt.MapFrom(c => !string.IsNullOrEmpty(c.CoverImage.Path) ? WebConstants.MoviesImagesPath + c.CoverImage.Path : ""));
         }
     }
 }

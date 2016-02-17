@@ -32,7 +32,10 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <img src="@Model.ImagePath" />
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Model.ImagePath" />
+            }
         </div>
         <div class="col-md-4">
             <p class="overview">Overview coming soon...</p>
@@ -49,7 +52,10 @@
                     {
                         <tr class="actor">
                             <td>
-                                <img src="@actor.ImagePath" width="50" />
+                                @if (!string.IsNullOrEmpty(actor.ImagePath))
+                                {
+                                    <img src="@actor.ImagePath" width="50" />
+                                }
                                 <strong class="name">@actor.FullName</strong>
                             </td>
                         </tr>
@@ -58,5 +64,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>
