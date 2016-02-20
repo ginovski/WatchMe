@@ -247,6 +247,7 @@
     </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\Actors\ActorDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Actors\ActorsListViewModel.cs" />
     <Compile Include="ViewModels\Actors\ActorMovieViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryMovieViewModel.cs" />
     <Compile Include="ViewModels\Home\CategoryViewModel.cs" />
@@ -336,6 +337,8 @@
     <Content Include="Views\Movies\Partials\_SidebarDailyMovie.cshtml" />
     <Content Include="Views\Actors\Details.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\Partials\_SearchMoviesPartial.cshtml" />
+    <Content Include="Views\Search\Partials\_SearchActorsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

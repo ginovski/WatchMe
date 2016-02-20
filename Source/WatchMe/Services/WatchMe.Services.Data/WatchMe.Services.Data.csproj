@@ -44,9 +44,11 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Contracts\IActorsService.cs" />
     <Compile Include="Contracts\ICategoriesService.cs" />
+    <Compile Include="Contracts\ISearchService.cs" />
     <Compile Include="MoviesService.cs" />
     <Compile Include="Contracts\IMoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\WatchMe.Data.Models\WatchMe.Data.Models.csproj">
