@@ -1,8 +1,9 @@
-﻿@model WatchMe.Web.ViewModels.Movies.MovieViewModel
+﻿@model WatchMe.Web.ViewModels.Actors.ActorDetailsViewModel
+
 <div class="movie-wrapper">
     <div class="row">
         <div class="col-md-4">
-            <h3>@Model.Title (@Model.ReleaseDate.Value.Year)</h3>
+            <h3>@(Model.FirstName + " " + Model.LastName)</h3>
         </div>
         <div class="col-md-8">
             <div class="rate">
@@ -19,44 +20,32 @@
             </div>
         </div>
     </div>
-    <div class="row title-info">
-        <div class="col-md-2">
-            <p class="text-muted">@Model.Duration min</p>
-        </div>
-        <div class="col-md-3">
-            <p class="text-muted">@string.Join(", ", Model.Categories)</p>
-        </div>
-        <div class="col-md-2">
-            <p class="text-muted">@Html.DisplayFor(m => m.ReleaseDate.Value)</p>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-3">
-            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            @if (!string.IsNullOrEmpty(Model.ProfileImagePath))
             {
-                <img src="@Model.ImagePath" />
+                <img src="@Model.ProfileImagePath" />
             }
         </div>
         <div class="col-md-4">
-            <p class="overview">Overview coming soon...</p>
-            <p class="director"><strong>Director: </strong><a href="/Directors/Details/@Model.DirectorId">@Model.DirectorFullName</a></p>
-            <p class="few-stars"><strong>Stars: </strong>@string.Join(", ", Model.Cast.Select(m => m.FullName).Take(3))</p>
+            <p class="firstName"><strong>First name: </strong> @Model.FirstName</p>
+            <p class="lastName"><strong>Last name: </strong> @Model.LastName</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
-            <div id="cast">
-                <h3>Cast</h3>
+            <div id="movies">
+                <h3>Known for</h3>
                 <table class="table table-striped" style="border: 1px solid #dfd7ca">
-                    @foreach (var actor in Model.Cast)
+                    @foreach (var movie in Model.Movies)
                     {
-                        <tr class="actor">
+                        <tr class="movie">
                             <td>
-                                @if (!string.IsNullOrEmpty(actor.ImagePath))
+                                @if (!string.IsNullOrEmpty(movie.ImagePath))
                                 {
-                                    <img src="@actor.ImagePath" width="50" />
+                                    <img src="@movie.ImagePath" width="50" />
                                 }
-                                <strong class="name"><a href="/Actors/Details/@actor.Id">@actor.FullName</a></strong>
+                                <strong class="name"><a href="/Movies/Details/@movie.Id">@movie.Title</a></strong>
                             </td>
                         </tr>
                     }

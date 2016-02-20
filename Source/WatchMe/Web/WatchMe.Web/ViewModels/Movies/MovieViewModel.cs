@@ -13,6 +13,8 @@
 
         public string DirectorFullName { get; set; }
 
+        public int DirectorId { get; set; }
+
         public int? Duration { get; set; }
 
         public DateTime? ReleaseDate { get; set; }
