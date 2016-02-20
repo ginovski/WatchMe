@@ -24,6 +24,17 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Categories", "Details", "Categories", new { id = ""}, null)</li>
                 </ul>
+                @using (Html.BeginForm("", "Search", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+                {
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" name="query" placeholder="Search for movies/actors">
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                }
                 @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
