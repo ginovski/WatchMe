@@ -6,7 +6,6 @@
     {
         public ActionResult Index(string query)
         {
-
             return View();
         }
     }

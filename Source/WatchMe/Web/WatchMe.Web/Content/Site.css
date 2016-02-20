@@ -124,3 +124,7 @@ textarea {
     border:0;
     background:transparent;
 }
+
+#search-container {
+    margin-top: 25px;
+}

@@ -335,13 +335,13 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Movies\Partials\_SidebarDailyMovie.cshtml" />
     <Content Include="Views\Actors\Details.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Actors\" />
     <Folder Include="Images\Directors\" />
     <Folder Include="Images\Movies\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
