@@ -10,5 +10,7 @@
         public const string DirectorsImagesPath = "/Images/Directors";
 
         public const double Version = 0.1;
+
+        public const string DefaultActorImage = ActorsImagesPath + "/default.png";
     }
 }

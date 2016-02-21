@@ -1,13 +1,14 @@
 ﻿namespace WatchMe.Web.ViewModels.Actors
 {
     using AutoMapper;
-    using Data.Models;
-    using Infastructure.Mapping;
+    using WatchMe.Data.Models;
+    using WatchMe.Web.Infastructure.Mapping;
     using Common;
-    using System.Collections.Generic;
-    using System.Linq;
-    public class ActorDetailsViewModel : IMapFrom<Actor>, IHaveCustomMappings
+
+    public class ActorsListViewModel : IMapFrom<Actor>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -16,14 +17,12 @@
 
         public int Rating { get; set; }
 
-        public IEnumerable<ActorMovieViewModel> Movies { get; set; }
-
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Actor, ActorDetailsViewModel>()
+            configuration.CreateMap<Actor, ActorsListViewModel>()
               .ForMember(a => a.ProfileImagePath, opt => opt.MapFrom(a => !string.IsNullOrEmpty(a.ProfileImage.Path) ? WebConstants.ActorsImagesPath + a.ProfileImage.Path : WebConstants.DefaultActorImage));
 
-            configuration.CreateMap<Actor, ActorDetailsViewModel>()
+            configuration.CreateMap<Actor, ActorsListViewModel>()
                 .ForMember(a => a.Rating, opt => opt.MapFrom(a => a.Rating.Value));
         }
     }

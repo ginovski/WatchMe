@@ -20,7 +20,7 @@ namespace WatchMe.Web.ViewModels.Movies
               .ForMember(c => c.FullName, opt => opt.MapFrom(c => c.FirstName + " " + c.LastName));
 
             configuration.CreateMap<Actor, MovieCastViewModel>()
-              .ForMember(c => c.ImagePath, opt => opt.MapFrom(c => !string.IsNullOrEmpty(c.ProfileImage.Path) ? WebConstants.ActorsImagesPath + c.ProfileImage.Path : ""));
+              .ForMember(c => c.ImagePath, opt => opt.MapFrom(c => !string.IsNullOrEmpty(c.ProfileImage.Path) ? WebConstants.ActorsImagesPath + c.ProfileImage.Path : WebConstants.DefaultActorImage));
         }
     }
 }
