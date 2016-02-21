@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WatchMe.Web.ViewModels.Users.UserMovieViewModel>
+
+<table class="table table-striped" style="border: 1px solid #dfd7ca">
+    @foreach (var movie in Model)
+    {
+        <tr class="movie">
+            <td>
+                @if (!string.IsNullOrEmpty(movie.ImagePath))
+                {
+                    <img src="@movie.ImagePath" width="50" />
+                }
+                <strong class="title"><a href="/Movies/Details/@movie.MovieId">@movie.Title</a></strong>
+            </td>
+            <td>
+                <strong>@movie.State</strong>
+            </td>
+        </tr>
+    }
+</table>
+
+
+

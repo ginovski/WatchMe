@@ -20,6 +20,12 @@ namespace WatchMe.Web
             );
 
             routes.MapRoute(
+                name: "Wishlist",
+                url: "Wishlist",
+                defaults: new { controller = "Users", action = "Wishlist" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

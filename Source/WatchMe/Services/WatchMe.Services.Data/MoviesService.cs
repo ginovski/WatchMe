@@ -29,7 +29,7 @@
         public MovieState? GetMovieStateForCurrentUser(string id, string userId)
         {
             var userMoviesQuery = this.userMovies.All()
-                .Where(um => um.MovieId == id && um.UserId == userId);
+                .Where(um => um.MovieId == new Guid(id) && um.UserId == userId);
 
             if (userMoviesQuery.Count() == 0)
             {
