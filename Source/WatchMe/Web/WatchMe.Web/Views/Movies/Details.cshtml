@@ -46,10 +46,21 @@
                 <p class="status">
                     <strong>Status: </strong>
                     <select class="form-control" id="status-select">
-                        <option value="3" selected="selected">Change status</option>
-                        <option value="0">To Watch</option>
-                        <option value="1">Watching</option>
-                        <option value="2">Watched</option>
+                        @if (Model.State == null)
+                        {
+                            <option value="3" selected="selected">Change status</option>
+                        }
+                        @for (int i = 0; i <= 2; i++)
+                        {
+                            if (Model.State != null && i == (int)Model.State)
+                            {
+                                <option value="@i" selected="selected">@((WatchMe.Data.Models.MovieState)i)</option>
+                            }
+                            else
+                            {
+                                <option value="@i">@((WatchMe.Data.Models.MovieState)i)</option>
+                            }
+                        }
                     </select>
                 </p>
             }
@@ -81,15 +92,16 @@
 
 @section scripts {
     <script>
-        (function(){
+        (function () {
             $('#status-select').change(function () {
                 var statusNumber = $(this).val();
                 var data = {
-                    movieId: @Model.Id,
+                    movieId: "@Model.Id",
                     statusNumber: statusNumber
                 };
                 $.ajax("/Movies/ChangeStatus", {
                     method: 'POST',
+                    contentType: 'application/json',
                     data: JSON.stringify(data),
                     success: function () {
 

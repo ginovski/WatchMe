@@ -6,21 +6,25 @@
     using Infastructure.Mapping;
     using WatchMe.Services.Data.Contracts;
     using System.Linq;
-    using Base;
     using System.Diagnostics;
-    public class MoviesController : BaseAuthorizationController
+    using Base;
+    using Microsoft.AspNet.Identity;
+    public class MoviesController : BaseController
     {
         private IMoviesService moviesService;
+        private IUsersService usersService;
 
         public MoviesController(IMoviesService moviesService, IUsersService usersService)
-            : base(usersService)
         {
+            this.usersService = usersService;
             this.moviesService = moviesService;
         }
 
         public ActionResult Details(string id)
         {
+            var movieState = this.moviesService.GetMovieStateForCurrentUser(id, this.User.Identity.GetUserId());
             var movie = this.moviesService.MovieById(id).To<MovieViewModel>().FirstOrDefault();
+            movie.State = movieState;
 
             return View(movie);
         }
@@ -32,6 +36,14 @@
             var dailyMovie = this.moviesService.GetDailyMovie().To<DailyMovieViewModel>().FirstOrDefault();
 
             return PartialView("Partials/_SidebarDailyMovie", dailyMovie);
+        }
+        
+        [Authorize]
+        public ActionResult ChangeStatus(string movieId, int statusNumber)
+        {
+            this.usersService.ChangeMovieStatus(movieId, statusNumber, this.User.Identity.GetUserId());
+
+            return this.RedirectToAction("Details", new { id = movieId });
         }
     }
 }

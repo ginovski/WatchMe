@@ -10,6 +10,7 @@
             this.Id = Guid.NewGuid();
             this.Categories = new HashSet<Category>();
             this.Cast = new HashSet<Actor>();
+            this.Users = new HashSet<UserMovie>();
         }
 
         public Guid Id { get; set; }
@@ -37,5 +38,7 @@
         public virtual ICollection<Category> Categories { get; set; }
 
         public virtual ICollection<Actor> Cast { get; set; }
+
+        public virtual ICollection<UserMovie> Users { get; set; }
     }
 }

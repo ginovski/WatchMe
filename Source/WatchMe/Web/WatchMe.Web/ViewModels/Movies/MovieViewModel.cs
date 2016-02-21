@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Common;
+
     public class MovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
         public string Id { get; set; }
@@ -28,6 +29,9 @@
         public IEnumerable<string> Categories { get; set; }
 
         public IEnumerable<MovieCastViewModel> Cast { get; set; }
+
+        [IgnoreMap]
+        public MovieState? State { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

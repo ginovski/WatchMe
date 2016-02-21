@@ -8,11 +8,12 @@
 
     public class MoviesService : IMoviesService
     {
-
         private IRepository<Movie> movies;
+        private IRepository<UserMovie> userMovies;
 
-        public MoviesService(IRepository<Movie> movies)
+        public MoviesService(IRepository<Movie> movies, IRepository<UserMovie> userMovies)
         {
+            this.userMovies = userMovies;
             this.movies = movies;
         }
 
@@ -23,6 +24,21 @@
                 .OrderBy(m => Guid.NewGuid());
 
             return queryRandomDailyMovie;
+        }
+
+        public MovieState? GetMovieStateForCurrentUser(string id, string userId)
+        {
+            var userMoviesQuery = this.userMovies.All()
+                .Where(um => um.MovieId == id && um.UserId == userId);
+
+            if (userMoviesQuery.Count() == 0)
+            {
+                return null;
+            }
+
+            return userMoviesQuery
+                .Select(um => um.State)
+                .FirstOrDefault();
         }
 
         public IQueryable<Movie> LatestReleasedMovies(int count)
