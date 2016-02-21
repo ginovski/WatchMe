@@ -7,6 +7,7 @@
         public Actor()
         {
             this.Movies = new HashSet<Movie>();
+            this.Ratings = new HashSet<Rating>();
         }
 
         public int Id { get; set; }
@@ -15,9 +16,7 @@
 
         public string LastName { get; set; }
 
-        public int RatingId { get; set; }
-
-        public Rating Rating { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
 
         public int? ProfileImageId { get; set; }
 

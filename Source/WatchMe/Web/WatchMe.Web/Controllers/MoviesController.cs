@@ -9,6 +9,7 @@
     using System.Diagnostics;
     using Base;
     using Microsoft.AspNet.Identity;
+    using Data.Models;
     public class MoviesController : BaseController
     {
         private IMoviesService moviesService;
@@ -22,7 +23,12 @@
 
         public ActionResult Details(string id)
         {
-            var movieState = this.moviesService.GetMovieStateForCurrentUser(id, this.User.Identity.GetUserId());
+            MovieState? movieState = null;
+            if (this.User.Identity.IsAuthenticated)
+            {
+                movieState = this.moviesService.GetMovieStateForCurrentUser(id, this.User.Identity.GetUserId());
+            }
+
             var movie = this.moviesService.MovieById(id).To<MovieViewModel>().FirstOrDefault();
             movie.State = movieState;
 
