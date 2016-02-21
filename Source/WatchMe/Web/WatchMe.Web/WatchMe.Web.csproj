@@ -52,12 +52,20 @@
       <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Glimpse.Core, Version=1.8.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Glimpse.1.8.2\lib\net45\Glimpse.Core.dll</HintPath>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -226,23 +234,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActorsController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\Actors\ActorDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Actors\ActorsListViewModel.cs" />
+    <Compile Include="ViewModels\Actors\ActorMovieViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryMovieViewModel.cs" />
     <Compile Include="ViewModels\Home\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Home\LatestMoviesViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Movies\DailyMovieViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieCastViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -319,12 +337,19 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Categories\Partials\_SidebarAllCategories.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Partials\_SidebarDailyMovie.cshtml" />
+    <Content Include="Views\Actors\Details.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\Partials\_SearchMoviesPartial.cshtml" />
+    <Content Include="Views\Search\Partials\_SearchActorsPartial.cshtml" />
+    <Content Include="Views\Users\WishList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Actors\" />
     <Folder Include="Images\Directors\" />
     <Folder Include="Images\Movies\" />
+    <Folder Include="Views\Ratings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -350,6 +375,10 @@
     <ProjectReference Include="..\..\Services\WatchMe.Services.Data\WatchMe.Services.Data.csproj">
       <Project>{b6389f2b-e0e8-40e5-b9d2-5c2a02d0bd96}</Project>
       <Name>WatchMe.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\WatchMe.Services.Web\WatchMe.Services.Web.csproj">
+      <Project>{3188f280-8978-4ff9-a21a-d907edd4b4dc}</Project>
+      <Name>WatchMe.Services.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\WatchMe.Web.Infastructure\WatchMe.Web.Infastructure.csproj">
       <Project>{d0dd816a-ecfa-41ea-96b8-58aa12e4a457}</Project>
@@ -398,9 +427,9 @@
   <Target Name="AfterBuild">
   </Target> -->
   <PropertyGroup>
-     <PostBuildEvent>
+    <PostBuildEvent>
        if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
        start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
      </PostBuildEvent>
-   </PropertyGroup>
+  </PropertyGroup>
 </Project>

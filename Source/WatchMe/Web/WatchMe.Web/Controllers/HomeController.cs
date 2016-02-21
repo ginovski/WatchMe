@@ -1,11 +1,12 @@
 ﻿namespace WatchMe.Web.Controllers
 {
+    using Base;
     using Infastructure.Mapping;
     using Services.Data.Contracts;
     using System.Linq;
     using System.Web.Mvc;
     using ViewModels.Home;
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private IMoviesService moviesService;
         private ICategoriesService categoriesService;
@@ -33,6 +34,7 @@
             return PartialView("Partials/_LatestMoviesPartial", latestThreeMovies);
         }
 
+        [OutputCache(Duration = 2 * 60 * 60)]
         [ChildActionOnly]
         public ActionResult AllCategories()
         {

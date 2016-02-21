@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WatchMe.Web.ViewModels.Actors.ActorsListViewModel>
+
+@foreach (var actor in Model)
+{
+    <div class="category-movie">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@actor.ProfileImagePath" />
+                    </div>
+                    <div class="col-md-6">
+                        <h3>@(actor.FirstName + " " + actor.LastName)</h3>
+                        <p><strong>First name: </strong> @actor.FirstName</p>
+                        <p><strong>First name: </strong> @actor.LastName</p>
+                        <p><strong>Rating: </strong> @actor.Rating / 5</p>
+                        <a class="btn btn-success more-details" href="/Actors/Details/@actor.Id">More details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

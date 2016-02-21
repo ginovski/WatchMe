@@ -11,8 +11,12 @@
 
         IQueryable<Movie> MoviesInCategory(string id, int page = 0, int pageSize = 10);
 
-        Movie MovieById(string id);
+        IQueryable<Movie> MovieById(string id);
 
         int MoviesInCategoryCount(string id);
+
+        IQueryable<Movie> GetDailyMovie();
+
+        MovieState? GetMovieStateForCurrentUser(string id, string userId);
     }
 }

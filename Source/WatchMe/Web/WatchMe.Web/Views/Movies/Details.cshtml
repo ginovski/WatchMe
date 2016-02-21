@@ -17,6 +17,7 @@
                 <input type="radio" id="star1" name="rate" value="1" />
                 <label for="star1" title="1">1 star</label>
             </div>
+            <h3><span id="rating">@string.Format("{0:f1}", Model.Rating)</span> / 5.0</h3>
         </div>
     </div>
     <div class="row title-info">
@@ -32,12 +33,38 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <img src="@Model.ImagePath" />
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Model.ImagePath" />
+            }
         </div>
         <div class="col-md-4">
-            <p class="overview">Overview coming soon...</p>
-            <p class="director"><strong>Director: </strong>@Model.DirectorFullName</p>
+            <p class="overview">@(string.IsNullOrEmpty(Model.Overview) ? "Overview coming soon.." : Model.Overview )</p>
+            <p class="director"><strong>Director: </strong><a href="/Directors/Details/@Model.DirectorId">@Model.DirectorFullName</a></p>
             <p class="few-stars"><strong>Stars: </strong>@string.Join(", ", Model.Cast.Select(m => m.FullName).Take(3))</p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p class="status">
+                    <strong>Status: </strong>
+                    <select class="form-control" id="status-select">
+                        @if (Model.State == null)
+                        {
+                            <option value="3" selected="selected">Change status</option>
+                        }
+                        @for (int i = 0; i <= 2; i++)
+                        {
+                            if (Model.State != null && i == (int)Model.State)
+                            {
+                                <option value="@i" selected="selected">@((WatchMe.Data.Models.MovieState)i)</option>
+                            }
+                            else
+                            {
+                                <option value="@i">@((WatchMe.Data.Models.MovieState)i)</option>
+                            }
+                        }
+                    </select>
+                </p>
+            }
         </div>
     </div>
     <div class="row">
@@ -49,8 +76,11 @@
                     {
                         <tr class="actor">
                             <td>
-                                <img src="@actor.ImagePath" width="50" />
-                                <strong class="name">@actor.FullName</strong>
+                                @if (!string.IsNullOrEmpty(actor.ImagePath))
+                                {
+                                    <img src="@actor.ImagePath" width="50" />
+                                }
+                                <strong class="name"><a href="/Actors/Details/@actor.Id">@actor.FullName</a></strong>
                             </td>
                         </tr>
                     }
@@ -58,5 +88,41 @@
             </div>
         </div>
     </div>
-    
+
 </div>
+
+@section scripts {
+    <script>
+        (function () {
+            $('#status-select').change(function () {
+                var statusNumber = $(this).val();
+                var data = {
+                    movieId: "@Model.Id",
+                    statusNumber: statusNumber
+                };
+                $.ajax("/Movies/ChangeStatus", {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data)
+                });
+            });
+
+            $('input[name="rate"]').change(function () {
+                var rateValue = $(this).val();
+
+                var data = {
+                    rateValue: rateValue
+                };
+                $.ajax("/Ratings/Movies/@Model.Id", {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (data)
+                    {
+                        $('#rating').text(Math.round(data.rating * 10) / 10);
+                    }
+                });
+            });
+        }());
+    </script>
+}

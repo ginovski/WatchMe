@@ -9,13 +9,13 @@
     using Contracts;
     using Models;
     using Migrations;
+    using Common;
 
     public class WatchMeDbContext : IdentityDbContext<User>, IWatchMeDbContext
     {
         public WatchMeDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base(DataConstants.DefaultConnectionName, throwIfV1Schema: false)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<WatchMeDbContext, Configuration>());
         }
 
         public IDbSet<Actor> Actors { get; set; }
@@ -45,20 +45,20 @@
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Director>()
-                .HasRequired(d => d.Rating)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Director>()
+            //    .HasRequired(d => d.Rating)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Actor>()
-                .HasRequired(d => d.Rating)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Actor>()
+            //    .HasRequired(d => d.Ratings)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Movie>()
-                .HasRequired(d => d.Rating)
-                .WithMany()
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Movie>()
+            //    .HasRequired(d => d.Ratings)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Properties<Guid>()
            .Where(info => info.Name.ToLower() == "id")
