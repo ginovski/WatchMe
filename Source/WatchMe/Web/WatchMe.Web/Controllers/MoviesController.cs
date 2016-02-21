@@ -6,11 +6,14 @@
     using Infastructure.Mapping;
     using WatchMe.Services.Data.Contracts;
     using System.Linq;
-    public class MoviesController : BaseController
+    using Base;
+    using System.Diagnostics;
+    public class MoviesController : BaseAuthorizationController
     {
         private IMoviesService moviesService;
 
-        public MoviesController(IMoviesService moviesService)
+        public MoviesController(IMoviesService moviesService, IUsersService usersService)
+            : base(usersService)
         {
             this.moviesService = moviesService;
         }
@@ -26,7 +29,7 @@
         [ChildActionOnly]
         public ActionResult DailyMovie()
         {
-            var dailyMovie =  this.moviesService.GetDailyMovie().To<DailyMovieViewModel>().FirstOrDefault();
+            var dailyMovie = this.moviesService.GetDailyMovie().To<DailyMovieViewModel>().FirstOrDefault();
 
             return PartialView("Partials/_SidebarDailyMovie", dailyMovie);
         }

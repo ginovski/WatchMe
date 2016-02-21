@@ -1,5 +1,6 @@
 ﻿namespace WatchMe.Web.Controllers
 {
+    using Base;
     using Infastructure.Mapping;
     using Services.Data.Contracts;
     using System.Linq;

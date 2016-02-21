@@ -9,6 +9,8 @@
     using Common;
     public class MovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
+        public string Id { get; set; }
+
         public string Title { get; set; }
 
         public string DirectorFullName { get; set; }

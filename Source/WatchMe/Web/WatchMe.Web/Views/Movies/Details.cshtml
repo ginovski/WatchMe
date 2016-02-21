@@ -41,6 +41,18 @@
             <p class="overview">Overview coming soon...</p>
             <p class="director"><strong>Director: </strong><a href="/Directors/Details/@Model.DirectorId">@Model.DirectorFullName</a></p>
             <p class="few-stars"><strong>Stars: </strong>@string.Join(", ", Model.Cast.Select(m => m.FullName).Take(3))</p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p class="status">
+                    <strong>Status: </strong>
+                    <select class="form-control" id="status-select">
+                        <option value="3" selected="selected">Change status</option>
+                        <option value="0">To Watch</option>
+                        <option value="1">Watching</option>
+                        <option value="2">Watched</option>
+                    </select>
+                </p>
+            }
         </div>
     </div>
     <div class="row">
@@ -66,3 +78,24 @@
     </div>
 
 </div>
+
+@section scripts {
+    <script>
+        (function(){
+            $('#status-select').change(function () {
+                var statusNumber = $(this).val();
+                var data = {
+                    movieId: @Model.Id,
+                    statusNumber: statusNumber
+                };
+                $.ajax("/Movies/ChangeStatus", {
+                    method: 'POST',
+                    data: JSON.stringify(data),
+                    success: function () {
+
+                    }
+                });
+            });
+        }());
+    </script>
+}
