@@ -23,6 +23,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Categories", "Details", "Categories", new { id = ""}, null)</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Wishlist">Wishlist</a></li>
+                    }
                 </ul>
                 @using (Html.BeginForm("", "Search", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
                 {

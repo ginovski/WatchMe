@@ -1,6 +1,7 @@
 ﻿namespace WatchMe.Services.Data
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using WatchMe.Data.Contracts;
     using WatchMe.Data.Models;
@@ -19,12 +20,12 @@
 
         public void ChangeMovieStatus(string movieId, int statusNumber, string userId)
         {
-            var userMovie = this.userMovies.All().Where(m => m.MovieId == movieId && m.UserId == userId).FirstOrDefault();
+            var userMovie = this.userMovies.All().Where(m => m.MovieId == new Guid(movieId) && m.UserId == userId).FirstOrDefault();
             if (userMovie == null)
             {
                 userMovie = new UserMovie()
                 {
-                    MovieId = movieId,
+                    MovieId = new Guid(movieId),
                     UserId = userId,
                     State = (MovieState)statusNumber,
                 };
@@ -45,6 +46,15 @@
             return this.users
                 .All()
                 .Where(u => u.Id == id);
+        }
+
+        public IQueryable<UserMovie> GetUserMovies(string userId)
+        {
+            var userMovies =  this.userMovies
+                .All()
+                .Where(um => um.UserId == userId);
+
+            return userMovies;
         }
     }
 }

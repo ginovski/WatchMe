@@ -1,12 +1,14 @@
 ﻿namespace WatchMe.Data.Models
 {
+    using System;
+
     public class UserMovie
     {
         public int Id { get; set; }
 
         public MovieState State { get; set; }
 
-        public string MovieId { get; set; }
+        public Guid? MovieId { get; set; }
 
         public virtual Movie Movie { get; set; }
 

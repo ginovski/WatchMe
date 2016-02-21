@@ -260,6 +260,7 @@
     <Compile Include="ViewModels\Movies\DailyMovieViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieCastViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -341,6 +342,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\Partials\_SearchMoviesPartial.cshtml" />
     <Content Include="Views\Search\Partials\_SearchActorsPartial.cshtml" />
+    <Content Include="Views\Users\WishList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,7 +350,6 @@
     <Folder Include="Images\Directors\" />
     <Folder Include="Images\Movies\" />
     <Folder Include="Views\Ratings\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
