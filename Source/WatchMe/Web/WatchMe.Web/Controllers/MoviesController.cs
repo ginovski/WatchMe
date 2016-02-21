@@ -33,5 +33,13 @@
 
             return PartialView("Partials/_SidebarDailyMovie", dailyMovie);
         }
+        
+        [Authorize]
+        public ActionResult ChangeStatus(string movieId, int statusNumber)
+        {
+            this.usersService.ChangeMovieStatus(movieId, statusNumber, this.CurrentUser.Id);
+
+            return this.RedirectToAction("Details", new { id = movieId });
+        }
     }
 }

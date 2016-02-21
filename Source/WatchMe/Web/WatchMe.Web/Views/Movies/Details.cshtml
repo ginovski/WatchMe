@@ -85,11 +85,12 @@
             $('#status-select').change(function () {
                 var statusNumber = $(this).val();
                 var data = {
-                    movieId: @Model.Id,
+                    movieId: "@Model.Id",
                     statusNumber: statusNumber
                 };
                 $.ajax("/Movies/ChangeStatus", {
                     method: 'POST',
+                    contentType: 'application/json',
                     data: JSON.stringify(data),
                     success: function () {
 

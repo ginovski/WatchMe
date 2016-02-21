@@ -7,5 +7,7 @@
     public interface IUsersService : IService
     {
         IQueryable<User> GetUserById(string id);
+
+        void ChangeMovieStatus(string movieId, int statusNumber, string userId);
     }
 }
