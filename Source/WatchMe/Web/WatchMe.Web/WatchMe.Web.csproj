@@ -235,13 +235,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorsController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -258,6 +260,7 @@
     <Compile Include="ViewModels\Movies\DailyMovieViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieCastViewModel.cs" />
     <Compile Include="ViewModels\Movies\MovieViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -339,12 +342,14 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\Partials\_SearchMoviesPartial.cshtml" />
     <Content Include="Views\Search\Partials\_SearchActorsPartial.cshtml" />
+    <Content Include="Views\Users\WishList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Actors\" />
     <Folder Include="Images\Directors\" />
     <Folder Include="Images\Movies\" />
+    <Folder Include="Views\Ratings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

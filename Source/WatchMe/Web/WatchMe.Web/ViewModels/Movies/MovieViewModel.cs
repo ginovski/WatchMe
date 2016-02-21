@@ -7,8 +7,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using Common;
+
     public class MovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
+        public string Id { get; set; }
+
         public string Title { get; set; }
 
         public string DirectorFullName { get; set; }
@@ -19,13 +22,18 @@
 
         public DateTime? ReleaseDate { get; set; }
 
-        public int Rating { get; set; }
+        public double Rating { get; set; }
 
         public string ImagePath { get; set; }
+
+        public string Overview { get; set; }
 
         public IEnumerable<string> Categories { get; set; }
 
         public IEnumerable<MovieCastViewModel> Cast { get; set; }
+
+        [IgnoreMap]
+        public MovieState? State { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
@@ -36,7 +44,7 @@
                 .ForMember(m => m.Categories, opt => opt.MapFrom(m => m.Categories.Select(c => c.Name)));
 
             configuration.CreateMap<Movie, MovieViewModel>()
-                .ForMember(m => m.Rating, opt => opt.MapFrom(m => m.Rating.Value));
+                .ForMember(m => m.Rating, opt => opt.MapFrom(m => m.Ratings.Count() > 0 ? m.Ratings.Average(r => r.Value) : 0));
 
             configuration.CreateMap<Movie, MovieViewModel>()
               .ForMember(c => c.ImagePath, opt => opt.MapFrom(c => !string.IsNullOrEmpty(c.CoverImage.Path) ? WebConstants.MoviesImagesPath + c.CoverImage.Path : ""));

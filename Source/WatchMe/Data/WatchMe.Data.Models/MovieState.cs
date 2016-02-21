@@ -2,8 +2,8 @@
 {
     public enum MovieState
     {
-        Watching = 0,
-        Watched = 1,
-        ToWatch = 2
+        ToWatch = 0,
+        Watching = 1,
+        Watched = 2,
     }
 }

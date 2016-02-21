@@ -10,7 +10,7 @@
     using Models;
 
     using TMDbLib.Objects.Movies;
-
+    using Common;
     public class MoviesFetcher
     {
         private const string ImdbTitleUrl = "http://www.imdb.com/title/";
@@ -32,10 +32,9 @@
 
         public void FetchMovies(IWatchMeDbContext db, int pagesOfTwenty = 1)
         {
-            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-            UriBuilder uri = new UriBuilder(codeBase);
-            string path = Uri.UnescapeDataString(uri.Path);
-            string directory = Path.GetDirectoryName(path).Substring(0, Path.GetDirectoryName(path).LastIndexOf('\\'));
+            string projectName = "Source\\WatchMe";
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string directory = basePath.Substring(0, basePath.IndexOf(projectName) + projectName.Length) + DataConstants.WebDownloadProjectPath;
 
             if (!db.Categories.Any())
             {
@@ -67,26 +66,38 @@
                         {
                             if (movie.PosterPath != null)
                             {
-                                webClient.DownloadFile(BaseImageUrl + movie.PosterPath, directory + "\\Images\\Movies\\" + movie.PosterPath);
+                               webClient.DownloadFile(BaseImageUrl + movie.PosterPath, directory + "\\Images\\Movies\\" + movie.PosterPath);
                             }
                             if (director.ProfilePath != null)
                             {
                                 webClient.DownloadFile(BaseImageUrl + director.ProfilePath, directory + "\\Images\\Directors\\" + director.ProfilePath);
                             }
                         }
+                        var directorNames = director.Name.Split(' ');
+                        var directorFirstName = string.Empty;
+                        var directorLastName = string.Empty;
+                        if (directorNames.Length == 2)
+                        {
+                            directorFirstName = directorNames[0];
+                            directorLastName = directorNames[1];
+                        }
+                        else
+                        {
+                            directorFirstName = director.Name;
+                        }
+
                         var dbMovie = new Models.Movie()
                         {
                             Title = movie.OriginalTitle,
                             ReleaseDate = movie.ReleaseDate,
                             Duration = movie.Runtime,
-                            Rating = new Rating(),
                             IMDBLink = ImdbTitleUrl + movie.ImdbId,
+                            Overview = movie.Overview,
                             Director = new Director()
                             {
-                                FirstName = director.Name.Split(' ')[0],
-                                LastName = director.Name.Split(' ')[1],
+                                FirstName = directorFirstName,
+                                LastName = directorLastName,
                                 ProfileImage = director.ProfilePath != null ? new Image() { Path = director.ProfilePath } : null,
-                                Rating = new Rating()
                             },
                             CoverImage = movie.PosterPath != null ? new Image() { Path = movie.PosterPath } : null
                         };
@@ -124,7 +135,6 @@
                                 {
                                     FirstName = firstName,
                                     LastName = lastName,
-                                    Rating = new Rating(),
                                     ProfileImage = actor.ProfilePath != null ? new Image() { Path = actor.ProfilePath } : null
                                 };
 

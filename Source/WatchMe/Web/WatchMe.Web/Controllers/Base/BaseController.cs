@@ -1,6 +1,7 @@
-﻿namespace WatchMe.Web.Controllers
+﻿namespace WatchMe.Web.Controllers.Base
 {
     using AutoMapper;
+    using Data.Models;
     using Ninject;
     using Services.Web.Contracts;
     using System.Web.Mvc;
