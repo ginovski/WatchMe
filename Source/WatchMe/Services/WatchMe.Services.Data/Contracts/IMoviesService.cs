@@ -16,5 +16,7 @@
         int MoviesInCategoryCount(string id);
 
         IQueryable<Movie> GetDailyMovie();
+
+        MovieState? GetMovieStateForCurrentUser(string id, string userId);
     }
 }
