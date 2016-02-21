@@ -17,6 +17,7 @@
                 <input type="radio" id="star1" name="rate" value="1" />
                 <label for="star1" title="1">1 star</label>
             </div>
+            <h3><span id="rating">@string.Format("{0:f1}", Model.Rating)</span> / 5.0</h3>
         </div>
     </div>
     <div class="row title-info">
@@ -38,7 +39,7 @@
             }
         </div>
         <div class="col-md-4">
-            <p class="overview">Overview coming soon...</p>
+            <p class="overview">@(string.IsNullOrEmpty(Model.Overview) ? "Overview coming soon.." : Model.Overview )</p>
             <p class="director"><strong>Director: </strong><a href="/Directors/Details/@Model.DirectorId">@Model.DirectorFullName</a></p>
             <p class="few-stars"><strong>Stars: </strong>@string.Join(", ", Model.Cast.Select(m => m.FullName).Take(3))</p>
             @if (User.Identity.IsAuthenticated)
@@ -102,9 +103,23 @@
                 $.ajax("/Movies/ChangeStatus", {
                     method: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify(data),
-                    success: function () {
+                    data: JSON.stringify(data)
+                });
+            });
 
+            $('input[name="rate"]').change(function () {
+                var rateValue = $(this).val();
+
+                var data = {
+                    rateValue: rateValue
+                };
+                $.ajax("/Ratings/Movies/@Model.Id", {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (data)
+                    {
+                        $('#rating').text(Math.round(data.rating * 10) / 10);
                     }
                 });
             });
