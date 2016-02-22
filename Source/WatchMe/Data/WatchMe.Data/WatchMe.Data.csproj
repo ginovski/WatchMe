@@ -79,6 +79,10 @@
     <Compile Include="Migrations\201602221708368_Clustered-Index-Added.Designer.cs">
       <DependentUpon>201602221708368_Clustered-Index-Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602221753292_Changed-Index.cs" />
+    <Compile Include="Migrations\201602221753292_Changed-Index.Designer.cs">
+      <DependentUpon>201602221753292_Changed-Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602221708368_Clustered-Index-Added.resx">
       <DependentUpon>201602221708368_Clustered-Index-Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221753292_Changed-Index.resx">
+      <DependentUpon>201602221753292_Changed-Index.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,9 +14,11 @@
         public int Id { get; set; }
 
         [MaxLength(30)]
-        [Index(IsUnique = true)]
+        
         public string Name { get; set; }
 
+        [MaxLength(30)]
+        [Index(IsUnique = true)]
         public string CategoryIdentifier { get; set; }
 
         public virtual ICollection<Movie> Movies { get; set; }
