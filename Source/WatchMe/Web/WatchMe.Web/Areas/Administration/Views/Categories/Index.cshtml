@@ -1,1 +1,30 @@
-﻿<h2>Categories administration</h2>
+﻿@{
+    const string ControllerName = "Categories";
+}
+
+<div class="container grid-wrapper">
+    <h2>Categories Administration</h2>
+    @(Html.Kendo().Grid<WatchMe.Web.Areas.Administration.ViewModels.Categories.CategoryViewModel>()
+        .Name("grid")
+        .Columns(c =>
+        {
+            c.Bound(m => m.Name);
+            c.Bound(m => m.CategoryIdentifier);
+            c.Command(e => e.Edit());
+            c.Command(e => e.Destroy());
+        })
+        .ColumnMenu()
+        .Pageable(page => page.Refresh(true))
+        .Sortable()
+        .Filterable()
+        .Scrollable()
+        .Resizable(resize => resize.Columns(true))
+        .Editable(edit => edit.Mode(GridEditMode.PopUp).TemplateName("EditCategoryTemplate"))
+        .DataSource(data => data
+        .Ajax()
+        .Model(m => m.Id(model => model.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .Update(update => update.Action("Update", ControllerName))
+        .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+    ))
+</div>

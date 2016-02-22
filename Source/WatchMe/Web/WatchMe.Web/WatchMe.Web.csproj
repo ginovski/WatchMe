@@ -240,6 +240,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\BaseAdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorsController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
@@ -449,6 +450,7 @@
     <Content Include="Content\kendo\kendo.uniform.mobile.min.css.map" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EditCategoryTemplate.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -761,9 +763,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\ViewModels\" />
-    <Folder Include="Areas\Administration\Views\BaseAdministration\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Content\kendo\Black\" />
     <Folder Include="Content\kendo\BlueOpal\" />
     <Folder Include="Content\kendo\Bootstrap\" />

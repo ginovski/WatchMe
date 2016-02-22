@@ -29,8 +29,8 @@
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/kendo").Include(
-                "~/Content/kendo/kendo.common.*",
-                "~/Content/kendo/kendo.default.*"));
+                "~/Content/kendo/kendo.common.min.css",
+                "~/Content/kendo/kendo.black.min.css"));
         }
     }
 }
