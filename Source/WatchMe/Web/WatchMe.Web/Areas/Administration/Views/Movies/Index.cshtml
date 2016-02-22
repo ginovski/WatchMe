@@ -1,0 +1,32 @@
+﻿@{
+    const string ControllerName = "Movies";
+}
+
+<div class="container grid-wrapper">
+    <h2>Movies Administration</h2>
+    @(Html.Kendo().Grid<WatchMe.Web.Areas.Administration.ViewModels.Movies.MovieViewModel>()
+        .Name("grid")
+        .Columns(c =>
+        {
+            c.Bound(m => m.Title);
+            c.Bound(m => m.Overview);
+            c.Bound(m => m.Duration);
+            c.Bound(m => m.ReleaseDate);
+            c.Command(e => e.Edit());
+            c.Command(e => e.Destroy());
+        })
+        .ColumnMenu()
+        .Pageable(page => page.Refresh(true))
+        .Sortable()
+        .Filterable()
+        .Scrollable()
+        .Resizable(resize => resize.Columns(true))
+        .Editable(edit => edit.Mode(GridEditMode.PopUp).TemplateName("EditMovieTemplate"))
+        .DataSource(data => data
+        .Ajax()
+        .Model(m => m.Id(model => model.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .Update(update => update.Action("Update", ControllerName))
+        .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+    ))
+</div>

@@ -20,5 +20,24 @@
         {
             return this.categories.All();
         }
+
+        public void Delete(int id)
+        {
+            var category = this.categories.GetById(id);
+
+            this.categories.Delete(category);
+            this.categories.SaveChanges();
+        }
+
+        public Category GetById(int id)
+        {
+            return this.categories.GetById(id);
+        }
+
+        public void Update(Category category)
+        {
+            this.categories.Update(category);
+            this.categories.SaveChanges();
+        }
     }
 }

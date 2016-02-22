@@ -21,5 +21,29 @@
 
             return actorQuery;
         }
+
+        public IQueryable<Actor> AllActors()
+        {
+            return this.actors.All();
+        }
+
+        public void Delete(int id)
+        {
+            var actor = this.actors.GetById(id);
+
+            this.actors.Delete(actor);
+            this.actors.SaveChanges();
+        }
+
+        public Actor GetById(int id)
+        {
+            return this.actors.GetById(id);
+        }
+
+        public void Update(Actor actor)
+        {
+            this.actors.Update(actor);
+            this.actors.SaveChanges();
+        }
     }
 }

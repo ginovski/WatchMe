@@ -8,5 +8,11 @@
     public interface ICategoriesService : IService
     {
         IQueryable<Category> AllCategories();
+
+        void Delete(int id);
+
+        Category GetById(int id);
+
+        void Update(Category category);
     }
 }

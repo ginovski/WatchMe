@@ -1,5 +1,6 @@
 ﻿namespace WatchMe.Services.Data.Contracts
 {
+    using System;
     using System.Linq;
 
     using Common;
@@ -20,5 +21,14 @@
         MovieState? GetMovieStateForCurrentUser(string id, string userId);
 
         void Review(string id, Review newReview);
+
+        IQueryable<Movie> AllMovies();
+
+        void Delete(Guid id);
+
+        Movie GetById(Guid id);
+
+        void Update(Movie movie);
+
     }
 }
