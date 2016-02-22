@@ -1,7 +1,8 @@
 ﻿namespace WatchMe.Data.Models
 {
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Actor
     {
         public Actor()
@@ -12,8 +13,12 @@
 
         public int Id { get; set; }
 
+        [MaxLength(50)]
+        [Index]
         public string FirstName { get; set; }
 
+        [MaxLength(50)]
+        [Index]
         public string LastName { get; set; }
 
         public virtual ICollection<Rating> Ratings { get; set; }
