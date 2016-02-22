@@ -18,5 +18,7 @@
         IQueryable<Movie> GetDailyMovie();
 
         MovieState? GetMovieStateForCurrentUser(string id, string userId);
+
+        void Review(string id, Review newReview);
     }
 }

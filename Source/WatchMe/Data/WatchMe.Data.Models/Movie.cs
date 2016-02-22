@@ -12,6 +12,7 @@
             this.Cast = new HashSet<Actor>();
             this.Users = new HashSet<UserMovie>();
             this.Ratings = new HashSet<Rating>();
+            this.Reviews = new HashSet<Review>();
         }
 
         public Guid Id { get; set; }
@@ -41,5 +42,7 @@
         public virtual ICollection<Actor> Cast { get; set; }
 
         public virtual ICollection<UserMovie> Users { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }
