@@ -13,8 +13,8 @@ namespace WatchMe.Data.Migrations
         public Configuration()
         {
             // TODO: When production must be false
-            AutomaticMigrationDataLossAllowed = true;
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "WatchMe.Data.WatchMeDbContext";
         }
 

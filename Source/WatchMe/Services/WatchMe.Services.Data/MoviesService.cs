@@ -78,5 +78,13 @@
                 .Where(m => m.Categories.Any(c => c.CategoryIdentifier == id))
                 .Count();
         }
+
+        public void Review(string id, Review newReview)
+        {
+            var movie = this.movies.GetById(new Guid(id));
+            movie.Reviews.Add(newReview);
+
+            this.movies.SaveChanges();
+        }
     }
 }

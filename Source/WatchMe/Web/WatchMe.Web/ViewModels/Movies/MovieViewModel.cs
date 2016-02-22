@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Common;
-
+    using Reviews;
     public class MovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
         public string Id { get; set; }
@@ -32,6 +32,8 @@
 
         public IEnumerable<MovieCastViewModel> Cast { get; set; }
 
+        public IEnumerable<ReviewViewModel> Reviews { get; set; }
+
         [IgnoreMap]
         public MovieState? State { get; set; }
 
@@ -48,6 +50,9 @@
 
             configuration.CreateMap<Movie, MovieViewModel>()
               .ForMember(c => c.ImagePath, opt => opt.MapFrom(c => !string.IsNullOrEmpty(c.CoverImage.Path) ? WebConstants.MoviesImagesPath + c.CoverImage.Path : ""));
+
+            configuration.CreateMap<Movie, MovieViewModel>()
+              .ForMember(c => c.Reviews, opt => opt.MapFrom(c => c.Reviews.OrderByDescending(r => r.DateCreated)));
         }
     }
 }
