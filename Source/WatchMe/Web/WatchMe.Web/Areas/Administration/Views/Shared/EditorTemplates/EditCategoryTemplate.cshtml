@@ -1,9 +1,9 @@
 ﻿@model WatchMe.Web.Areas.Administration.ViewModels.Categories.CategoryViewModel
 <p>
     <strong>Name</strong>
-    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    @Html.EditorFor(m => m.Name)
 </p>
 <p>
     <strong>Category Identifier</strong>
-    @Html.TextBoxFor(m => m.CategoryIdentifier, new { @class = "form-control" })
+    @Html.EditorFor(m => m.CategoryIdentifier)
 </p>
