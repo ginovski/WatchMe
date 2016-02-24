@@ -40,7 +40,7 @@
                         }
                     }
                 </ul>
-                @using (Html.BeginForm("", "Search", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+                @using (Html.BeginForm("", "Search", new { area = ""},  FormMethod.Get, new { @class = "navbar-form navbar-left" }))
                 {
                     <div class="input-group stylish-input-group">
                         <input type="text" class="form-control" name="query" placeholder="Search for movies/actors">
