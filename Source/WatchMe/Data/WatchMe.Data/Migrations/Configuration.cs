@@ -1,14 +1,12 @@
 namespace WatchMe.Data.Migrations
 {
-    using System;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System.Data.Entity.Migrations;
     using System.Linq;
-
-    using Common;
-    using Models;
     using Tools;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Microsoft.AspNet.Identity;
+
     public sealed class Configuration : DbMigrationsConfiguration<WatchMeDbContext>
     {
         public Configuration()
@@ -39,7 +37,6 @@ namespace WatchMe.Data.Migrations
                 manager.Create(user, "ChangeAdmin");
                 manager.AddToRole(user.Id, "Admin");
             }
-
 
             if (context.Movies.Any())
             {

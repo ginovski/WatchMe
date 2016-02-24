@@ -21,7 +21,8 @@
 
             var newAverage = this.ratingsService.RateMovie(id, rateValue, userId);
 
-            return this.Json(new {
+            return this.Json(new
+            {
                 rating = newAverage
             });
         }

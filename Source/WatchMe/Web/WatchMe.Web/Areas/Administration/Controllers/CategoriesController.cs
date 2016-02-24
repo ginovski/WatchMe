@@ -7,6 +7,7 @@
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels.Categories;
+
     public class CategoriesController : BaseAdministrationController
     {
         private ICategoriesService categoriesService;

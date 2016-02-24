@@ -25,7 +25,7 @@
         public void Delete(Guid id)
         {
             var movie = this.movies.GetById(id);
-            
+
             this.movies.Delete(movie);
             this.movies.SaveChanges();
         }

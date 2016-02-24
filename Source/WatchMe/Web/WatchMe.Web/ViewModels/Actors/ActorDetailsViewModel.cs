@@ -1,11 +1,12 @@
 ﻿namespace WatchMe.Web.ViewModels.Actors
 {
     using AutoMapper;
+    using Common;
     using Data.Models;
     using Infastructure.Mapping;
-    using Common;
     using System.Collections.Generic;
     using System.Linq;
+
     public class ActorDetailsViewModel : IMapFrom<Actor>, IHaveCustomMappings
     {
         public string FirstName { get; set; }

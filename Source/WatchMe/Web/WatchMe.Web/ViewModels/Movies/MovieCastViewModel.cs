@@ -1,8 +1,7 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using WatchMe.Data.Models;
-using WatchMe.Web.Infastructure.Mapping;
 using WatchMe.Web.Common;
+using WatchMe.Web.Infastructure.Mapping;
 
 namespace WatchMe.Web.ViewModels.Movies
 {

@@ -1,6 +1,5 @@
 ﻿namespace WatchMe.Data.Tools.Adapters
 {
-    using System;
     using System.Collections.Generic;
 
     using TMDbLib.Client;

@@ -1,11 +1,11 @@
 ﻿namespace WatchMe.Web.ViewModels.Home
 {
     using AutoMapper;
+    using Common;
     using Data.Models;
     using Infastructure.Mapping;
-    using Common;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class LatestMoviesViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {

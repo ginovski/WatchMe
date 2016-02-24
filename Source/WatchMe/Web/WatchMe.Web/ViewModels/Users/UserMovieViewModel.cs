@@ -1,10 +1,11 @@
 ﻿namespace WatchMe.Web.ViewModels.Users
 {
-    using System;
     using AutoMapper;
+    using Common;
+    using System;
     using WatchMe.Data.Models;
     using WatchMe.Web.Infastructure.Mapping;
-    using Common;
+
     public class UserMovieViewModel : IMapFrom<UserMovie>, IHaveCustomMappings
     {
         public Guid? MovieId { get; set; }

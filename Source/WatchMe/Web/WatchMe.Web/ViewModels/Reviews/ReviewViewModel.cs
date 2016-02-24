@@ -1,14 +1,16 @@
 ﻿namespace WatchMe.Web.ViewModels.Reviews
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using AutoMapper;
     using Data.Models;
     using Infastructure.Mapping;
 
-    public class ReviewViewModel : IMapFrom<Review>, IHaveCustomMappings 
+    public class ReviewViewModel : IMapFrom<Review>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
+        [Required]
         public string Content { get; set; }
 
         public DateTime DateCreated { get; set; }

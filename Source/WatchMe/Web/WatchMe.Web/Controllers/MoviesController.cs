@@ -1,15 +1,14 @@
 ﻿namespace WatchMe.Web.Controllers
 {
-    using System.Web.Mvc;
-
-    using ViewModels.Movies;
-    using Infastructure.Mapping;
-    using WatchMe.Services.Data.Contracts;
-    using System.Linq;
-    using System.Diagnostics;
     using Base;
-    using Microsoft.AspNet.Identity;
     using Data.Models;
+    using Infastructure.Mapping;
+    using Microsoft.AspNet.Identity;
+    using System.Linq;
+    using System.Web.Mvc;
+    using ViewModels.Movies;
+    using WatchMe.Services.Data.Contracts;
+
     public class MoviesController : BaseController
     {
         private IMoviesService moviesService;
@@ -43,7 +42,7 @@
 
             return PartialView("Partials/_SidebarDailyMovie", dailyMovie);
         }
-        
+
         [Authorize]
         public ActionResult ChangeStatus(string movieId, int statusNumber)
         {

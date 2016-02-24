@@ -1,7 +1,6 @@
 ﻿namespace WatchMe.Web.Controllers.Base
 {
     using AutoMapper;
-    using Data.Models;
     using Ninject;
     using Services.Web.Contracts;
     using System.Web.Mvc;
@@ -9,7 +8,7 @@
 
     public class BaseController : Controller
     {
-        [Inject]  
+        [Inject]
         public ICacheService Cache { get; set; }
 
         protected IMapper Mapper

@@ -1,10 +1,9 @@
 ﻿namespace WatchMe.Web.Infastructure.Mapping
 {
+    using AutoMapper.QueryableExtensions;
     using System;
     using System.Linq;
     using System.Linq.Expressions;
-
-    using AutoMapper.QueryableExtensions;
 
     public static class QueryableExtensions
     {

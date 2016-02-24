@@ -10,6 +10,8 @@
 
     public class ReviewsController : BaseController
     {
+        private const string ReviewErrorMessage = "Content can not be empty";
+
         private IMoviesService moviesService;
         private IReviewsService reviewsService;
 
@@ -60,7 +62,7 @@
             {
                 this.reviewsService.Flag(id);
             }
-            
+
             return this.Content(string.Empty);
         }
     }
