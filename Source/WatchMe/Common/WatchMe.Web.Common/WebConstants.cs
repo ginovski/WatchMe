@@ -9,7 +9,7 @@
         public const string ActorsImagesPath = "/Images/Actors";
         public const string DirectorsImagesPath = "/Images/Directors";
 
-        public const double Version = 0.2;
+        public const double Version = 0.3;
 
         public const string DefaultActorImage = ActorsImagesPath + "/default.png";
     }
