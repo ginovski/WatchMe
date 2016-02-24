@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchMe.Services.Common", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchMe.Services.Web", "Services\WatchMe.Services.Web\WatchMe.Services.Web.csproj", "{3188F280-8978-4FF9-A21A-D907EDD4B4DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0D5287F9-BC9B-4CE3-9A91-0E770DDF02D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchMe.Services.Data.Tests", "Tests\WatchMe.Services.Data.Tests\WatchMe.Services.Data.Tests.csproj", "{513FB2F6-E25A-4878-8BF2-CD7E5E65081F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,10 @@ Global
 		{3188F280-8978-4FF9-A21A-D907EDD4B4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3188F280-8978-4FF9-A21A-D907EDD4B4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3188F280-8978-4FF9-A21A-D907EDD4B4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513FB2F6-E25A-4878-8BF2-CD7E5E65081F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513FB2F6-E25A-4878-8BF2-CD7E5E65081F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513FB2F6-E25A-4878-8BF2-CD7E5E65081F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513FB2F6-E25A-4878-8BF2-CD7E5E65081F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +93,6 @@ Global
 		{672242D0-CC92-437A-B873-97739E03BDA9} = {C15225CC-19B7-4C1A-AEF8-959BC12E3C3D}
 		{A022A784-7F84-488A-AE05-E0726FABFD22} = {3FF5C8CF-59B4-40C2-BA0B-E3D871E97218}
 		{3188F280-8978-4FF9-A21A-D907EDD4B4DC} = {3FF5C8CF-59B4-40C2-BA0B-E3D871E97218}
+		{513FB2F6-E25A-4878-8BF2-CD7E5E65081F} = {0D5287F9-BC9B-4CE3-9A91-0E770DDF02D7}
 	EndGlobalSection
 EndGlobal
