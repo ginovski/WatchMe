@@ -6,9 +6,7 @@
 // See http://bugs.jquery.com/ticket/13335
 // "use strict";
 
-
 jQuery.migrateVersion = "1.3.0";
-
 
 var warnedAbout = {};
 
@@ -80,7 +78,6 @@ if ( document.compatMode === "BackCompat" ) {
 	// jQuery has never supported or tested Quirks Mode
 	migrateWarn( "jQuery is not compatible with Quirks Mode" );
 }
-
 
 var attrFn = jQuery( "<input/>", { size: 1 } ).attr("size") && jQuery.attrFn,
 	oldAttr = jQuery.attr,
@@ -188,7 +185,6 @@ jQuery.attrHooks.value = {
 	}
 };
 
-
 var matched, browser,
 	oldInit = jQuery.fn.init,
 	oldParseJSON = jQuery.parseJSON,
@@ -241,7 +237,6 @@ jQuery.fn.init = function( selector, context, rootjQuery ) {
 		// A jQuery object, copy its properties
 		ret.selector = selector.selector;
 		ret.context = selector.context;
-
 	} else {
 		ret.selector = typeof selector === "string" ? selector : "";
 		if ( selector ) {
@@ -333,7 +328,6 @@ jQuery.fn.size = function() {
 	return this.length;
 };
 
-
 var internalSwapCall = false;
 
 // If this version of jQuery has .swap(), don't false-alarm on internal uses
@@ -378,14 +372,12 @@ jQuery.swap = function( elem, options, callback, args ) {
 	return ret;
 };
 
-
 // Ensure that $.ajax gets the new parseJSON defined in core.js
 jQuery.ajaxSetup({
 	converters: {
 		"text json": jQuery.parseJSON
 	}
 });
-
 
 var oldFnData = jQuery.fn.data;
 
@@ -404,7 +396,6 @@ jQuery.fn.data = function( name ) {
 	}
 	return oldFnData.apply( this, arguments );
 };
-
 
 var rscriptType = /\/(java|ecma)script/i;
 
@@ -500,7 +491,6 @@ jQuery.event.remove = function( elem, types, handler, selector, mappedTypes ){
 };
 
 jQuery.each( [ "load", "unload", "error" ], function( _, name ) {
-
 	jQuery.fn[ name ] = function() {
 		var args = Array.prototype.slice.call( arguments, 0 );
 		migrateWarn( "jQuery.fn." + name + "() is deprecated" );
@@ -525,11 +515,9 @@ jQuery.each( [ "load", "unload", "error" ], function( _, name ) {
 		this.triggerHandler.apply( this, args );
 		return this;
 	};
-
 });
 
 jQuery.fn.toggle = function( fn, fn2 ) {
-
 	// Don't mess with animation or css toggles
 	if ( !jQuery.isFunction( fn ) || !jQuery.isFunction( fn2 ) ) {
 		return oldToggle.apply( this, arguments );
@@ -630,10 +618,8 @@ jQuery.fn.find = function( selector ) {
 	return ret;
 };
 
-
 // jQuery 1.6 did not support Callbacks, do not warn there
 if ( jQuery.Callbacks ) {
-
 	var oldDeferred = jQuery.Deferred,
 		tuples = [
 			// action, add listener, callbacks, .then handlers, final state
@@ -677,7 +663,6 @@ if ( jQuery.Callbacks ) {
 				});
 				fns = null;
 			}).promise();
-
 		};
 
 		deferred.isResolved = function() {
@@ -696,7 +681,5 @@ if ( jQuery.Callbacks ) {
 
 		return deferred;
 	};
-
 }
-
 })( jQuery, window );

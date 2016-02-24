@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace WatchMe.Web
@@ -17,7 +13,7 @@ namespace WatchMe.Web
                 name: "CategoryDetails",
                 url: "Categories/{id}",
                 defaults: new { controller = "Categories", action = "Details" },
-                namespaces: new [] { "WatchMe.Web.Controllers" }
+                namespaces: new[] { "WatchMe.Web.Controllers" }
             );
 
             routes.MapRoute(

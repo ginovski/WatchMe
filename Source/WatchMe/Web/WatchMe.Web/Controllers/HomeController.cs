@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using ViewModels.Home;
+
     public class HomeController : BaseController
     {
         private IMoviesService moviesService;
@@ -19,7 +20,6 @@
 
         public ActionResult Index()
         {
-            
             return View();
         }
 

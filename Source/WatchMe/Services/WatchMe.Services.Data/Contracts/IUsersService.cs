@@ -9,6 +9,7 @@
         IQueryable<User> GetUserById(string id);
 
         void ChangeMovieStatus(string movieId, int statusNumber, string userId);
+
         IQueryable<UserMovie> GetUserMovies(string userId);
     }
 }

@@ -1,9 +1,8 @@
 ﻿namespace WatchMe.Services.Data.Contracts
 {
+    using Common;
     using System;
     using System.Linq;
-
-    using Common;
     using WatchMe.Data.Models;
 
     public interface IMoviesService : IService
@@ -29,6 +28,5 @@
         Movie GetById(Guid id);
 
         void Update(Movie movie);
-
     }
 }

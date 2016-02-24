@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(WatchMe.Web.Startup))]
+
 namespace WatchMe.Web
 {
     public partial class Startup

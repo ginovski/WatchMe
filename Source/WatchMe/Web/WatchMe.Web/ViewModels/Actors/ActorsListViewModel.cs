@@ -1,10 +1,11 @@
 ﻿namespace WatchMe.Web.ViewModels.Actors
 {
     using AutoMapper;
-    using WatchMe.Data.Models;
-    using WatchMe.Web.Infastructure.Mapping;
     using Common;
     using System.Linq;
+    using WatchMe.Data.Models;
+    using WatchMe.Web.Infastructure.Mapping;
+
     public class ActorsListViewModel : IMapFrom<Actor>, IHaveCustomMappings
     {
         public int Id { get; set; }

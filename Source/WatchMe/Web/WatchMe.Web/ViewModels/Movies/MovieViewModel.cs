@@ -1,13 +1,14 @@
 ﻿namespace WatchMe.Web.ViewModels.Movies
 {
-    using System;
     using AutoMapper;
+    using Common;
     using Data.Models;
     using Infastructure.Mapping;
+    using Reviews;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Common;
-    using Reviews;
+
     public class MovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
         public string Id { get; set; }

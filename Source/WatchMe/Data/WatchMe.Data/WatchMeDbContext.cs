@@ -1,15 +1,12 @@
 ﻿namespace WatchMe.Data
 {
+    using Common;
+    using Contracts;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
-
-    using Microsoft.AspNet.Identity.EntityFramework;
-
-    using Contracts;
-    using Models;
-    using Migrations;
-    using Common;
 
     public class WatchMeDbContext : IdentityDbContext<User>, IWatchMeDbContext
     {

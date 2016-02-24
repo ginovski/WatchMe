@@ -6,6 +6,7 @@
     using System.Web.Mvc;
     using ViewModels.Actors;
     using ViewModels.Categories;
+
     public class SearchController : Controller
     {
         private ISearchService searchService;

@@ -1,8 +1,7 @@
 namespace WatchMe.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class ChangedIndex : DbMigration
     {
         public override void Up()
@@ -11,7 +10,7 @@ namespace WatchMe.Data.Migrations
             AlterColumn("dbo.Categories", "CategoryIdentifier", c => c.String(maxLength: 30));
             CreateIndex("dbo.Categories", "CategoryIdentifier", unique: true);
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.Categories", new[] { "CategoryIdentifier" });

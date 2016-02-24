@@ -1,16 +1,13 @@
 ﻿namespace WatchMe.Data.Tools
 {
-    using System;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-
     using Adapters;
+    using Common;
     using Contracts;
     using Models;
-
+    using System;
+    using System.Linq;
     using TMDbLib.Objects.Movies;
-    using Common;
+
     public class MoviesFetcher
     {
         private const string ImdbTitleUrl = "http://www.imdb.com/title/";
@@ -38,7 +35,7 @@
 
             if (!db.Categories.Any())
             {
-                var genres = client.GetMovieGenres();
+                var genres = this.client.GetMovieGenres();
                 foreach (var genre in genres)
                 {
                     var newCategory = new Category()
@@ -57,22 +54,24 @@
             {
                 for (int i = 1; i <= pagesOfTwenty; i++)
                 {
-                    var mostPopularMovies = client.GetMovieList(MovieListType.Popular, i).Results;
+                    var mostPopularMovies = this.client.GetMovieList(MovieListType.Popular, i).Results;
                     foreach (var movieItem in mostPopularMovies)
                     {
-                        var movie = client.GetMovie(movieItem.Id, MovieMethods.Credits);
+                        var movie = this.client.GetMovie(movieItem.Id, MovieMethods.Credits);
                         var director = movie.Credits.Crew.FirstOrDefault(c => c.Job == "Director");
-                        using (webClient)
+                        using (this.webClient)
                         {
                             if (movie.PosterPath != null)
                             {
-                               webClient.DownloadFile(BaseImageUrl + movie.PosterPath, directory + "\\Images\\Movies\\" + movie.PosterPath);
+                                this.webClient.DownloadFile(BaseImageUrl + movie.PosterPath, directory + "\\Images\\Movies\\" + movie.PosterPath);
                             }
+
                             if (director.ProfilePath != null)
                             {
-                                webClient.DownloadFile(BaseImageUrl + director.ProfilePath, directory + "\\Images\\Directors\\" + director.ProfilePath);
+                                this.webClient.DownloadFile(BaseImageUrl + director.ProfilePath, directory + "\\Images\\Directors\\" + director.ProfilePath);
                             }
                         }
+
                         var directorNames = director.Name.Split(' ');
                         var directorFirstName = string.Empty;
                         var directorLastName = string.Empty;
@@ -102,14 +101,13 @@
                             CoverImage = movie.PosterPath != null ? new Image() { Path = movie.PosterPath } : null
                         };
 
-
                         foreach (var actor in movie.Credits.Cast)
                         {
-                            using (webClient)
+                            using (this.webClient)
                             {
                                 if (actor.ProfilePath != null)
                                 {
-                                    webClient.DownloadFile(BaseImageUrl + actor.ProfilePath, directory + "\\Images\\Actors\\" + actor.ProfilePath);
+                                    this.webClient.DownloadFile(BaseImageUrl + actor.ProfilePath, directory + "\\Images\\Actors\\" + actor.ProfilePath);
                                 }
                             }
 

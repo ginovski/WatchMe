@@ -1,10 +1,10 @@
 ﻿namespace WatchMe.Web.ViewModels.Actors
 {
-    using System;
     using AutoMapper;
+    using Common;
     using WatchMe.Data.Models;
     using WatchMe.Web.Infastructure.Mapping;
-    using Common;
+
     public class ActorMovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
         public string Id { get; set; }

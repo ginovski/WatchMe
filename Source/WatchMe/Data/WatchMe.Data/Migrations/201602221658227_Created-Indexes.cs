@@ -1,8 +1,7 @@
 namespace WatchMe.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class CreatedIndexes : DbMigration
     {
         public override void Up()
@@ -14,7 +13,7 @@ namespace WatchMe.Data.Migrations
             CreateIndex("dbo.Actors", "LastName");
             CreateIndex("dbo.Movies", "Title");
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.Movies", new[] { "Title" });

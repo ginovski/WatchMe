@@ -1,18 +1,16 @@
 ﻿namespace WatchMe.Web.ViewModels.Movies
 {
+    using AutoMapper;
+    using Common;
     using System.Collections.Generic;
     using System.Linq;
-
-    using AutoMapper;
-
-    using Common;
     using WatchMe.Data.Models;
     using WatchMe.Web.Infastructure.Mapping;
 
     public class DailyMovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {
         public string Id { get; set; }
-        
+
         public string Title { get; set; }
 
         public string ImagePath { get; set; }

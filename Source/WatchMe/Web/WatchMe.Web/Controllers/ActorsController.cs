@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using ViewModels.Actors;
+
     public class ActorsController : Controller
     {
         private IActorsService actorsService;

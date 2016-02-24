@@ -1,7 +1,6 @@
 ﻿namespace WatchMe.Services.Data
 {
     using System;
-    using System.Data.Entity;
     using System.Linq;
     using WatchMe.Data.Contracts;
     using WatchMe.Data.Models;
@@ -50,7 +49,7 @@
 
         public IQueryable<UserMovie> GetUserMovies(string userId)
         {
-            var userMovies =  this.userMovies
+            var userMovies = this.userMovies
                 .All()
                 .Where(um => um.UserId == userId);
 

@@ -1,11 +1,10 @@
 ﻿namespace WatchMe.Data.Repositories
 {
+    using Contracts;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-
-    using Contracts;
 
     public class GenericRepository<T> : IRepository<T> where T : class
     {
