@@ -17,6 +17,24 @@
             this.movies = movies;
         }
 
+        public IQueryable<Movie> AllMovies()
+        {
+            return this.movies.All();
+        }
+
+        public void Delete(Guid id)
+        {
+            var movie = this.movies.GetById(id);
+            
+            this.movies.Delete(movie);
+            this.movies.SaveChanges();
+        }
+
+        public Movie GetById(Guid id)
+        {
+            return this.movies.GetById(id);
+        }
+
         public IQueryable<Movie> GetDailyMovie()
         {
             var queryRandomDailyMovie = this.movies
@@ -77,6 +95,20 @@
                 .All()
                 .Where(m => m.Categories.Any(c => c.CategoryIdentifier == id))
                 .Count();
+        }
+
+        public void Review(string id, Review newReview)
+        {
+            var movie = this.movies.GetById(new Guid(id));
+            movie.Reviews.Add(newReview);
+
+            this.movies.SaveChanges();
+        }
+
+        public void Update(Movie movie)
+        {
+            this.movies.Update(movie);
+            this.movies.SaveChanges();
         }
     }
 }

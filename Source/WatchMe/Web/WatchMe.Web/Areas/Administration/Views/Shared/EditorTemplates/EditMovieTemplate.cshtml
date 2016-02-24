@@ -1,0 +1,18 @@
+﻿@model WatchMe.Web.Areas.Administration.ViewModels.Movies.MovieViewModel
+
+<p>
+    <strong>Title</strong>
+    @Html.EditorFor(m => m.Title)
+</p>
+<p>
+    <strong>Overview</strong>
+    @Html.TextAreaFor(m => m.Overview, new { @class = "k-textbox"})
+</p>
+<p>
+    <strong>Duration</strong>
+    @Html.EditorFor(m => m.Duration)
+</p>
+<p>
+    <strong>Release Date</strong>
+    @Html.EditorFor(m => m.ReleaseDate)
+</p>

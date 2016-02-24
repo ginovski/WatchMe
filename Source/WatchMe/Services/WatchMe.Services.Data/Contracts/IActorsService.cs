@@ -6,6 +6,14 @@
 
     public interface IActorsService : IService
     {
-        IQueryable<Actor> ActorById(int id); 
+        IQueryable<Actor> ActorById(int id);
+
+        void Delete(int id);
+
+        IQueryable<Actor> AllActors();
+
+        Actor GetById(int id);
+
+        void Update(Actor actor);
     }
 }

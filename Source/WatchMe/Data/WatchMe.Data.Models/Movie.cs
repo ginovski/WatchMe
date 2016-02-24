@@ -2,7 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Movie
     {
         public Movie()
@@ -12,10 +13,13 @@
             this.Cast = new HashSet<Actor>();
             this.Users = new HashSet<UserMovie>();
             this.Ratings = new HashSet<Rating>();
+            this.Reviews = new HashSet<Review>();
         }
 
         public Guid Id { get; set; }
 
+        [MaxLength(100)]
+        [Index]
         public string Title { get; set; }
 
         public int? Duration { get; set; }
@@ -41,5 +45,7 @@
         public virtual ICollection<Actor> Cast { get; set; }
 
         public virtual ICollection<UserMovie> Users { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

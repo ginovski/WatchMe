@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WatchMe.Web.Areas.Administration.ViewModels.Reviews.ReviewViewModel>
+
+@foreach (var review in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">@review.AuthorUsername</div>
+                <div class="col-md-6">@review.Content</div>
+                <div class="col-md-3">
+                    @Ajax.ActionLink("Accept", "Accept", "Reviews", new { id = review.Id, area = "Administration" }, new AjaxOptions
+               {
+                   HttpMethod = "POST",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "reviews-admin"
+
+               }, new { @class = "btn btn-success" })
+
+                    @Ajax.ActionLink("Deny", "Deny", "Reviews", new { id = review.Id, area = "Administration" }, new AjaxOptions
+               {
+                   HttpMethod = "POST",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "reviews-admin"
+
+               }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -16,19 +16,22 @@ namespace WatchMe.Web
             routes.MapRoute(
                 name: "CategoryDetails",
                 url: "Categories/{id}",
-                defaults: new { controller = "Categories", action = "Details" }
+                defaults: new { controller = "Categories", action = "Details" },
+                namespaces: new [] { "WatchMe.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Wishlist",
                 url: "Wishlist",
-                defaults: new { controller = "Users", action = "Wishlist" }
+                defaults: new { controller = "Users", action = "Wishlist" },
+                namespaces: new[] { "WatchMe.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WatchMe.Web.Controllers" }
             );
         }
     }
