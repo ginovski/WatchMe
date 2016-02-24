@@ -1,4 +1,5 @@
 ﻿@model WatchMe.Web.ViewModels.Reviews.ReviewViewModel
 
 <strong>@Model.Email </strong><span class="text-muted"> reviewed on @Model.DateCreated</span>
+<a href="/Reviews/Flag/@Model.Id" data-ajax="true" data-ajax-method="POST"><span class="glyphicon glyphicon-flag"></span></a>
 <p>@Model.Content</p>

@@ -131,7 +131,9 @@
                     contentType: 'application/json',
                     data: JSON.stringify(data),
                     success: function (data) {
-                        $('#rating').text(Math.round(data.rating * 10) / 10);
+                        if (!isNaN(data.rating)) {
+                            $('#rating').text(Math.round(data.rating * 10) / 10);
+                        }
                     }
                 });
             });

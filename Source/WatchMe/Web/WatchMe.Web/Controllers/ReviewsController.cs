@@ -11,10 +11,12 @@
     public class ReviewsController : BaseController
     {
         private IMoviesService moviesService;
+        private IReviewsService reviewsService;
 
-        public ReviewsController(IMoviesService moviesService)
+        public ReviewsController(IMoviesService moviesService, IReviewsService reviewsService)
         {
             this.moviesService = moviesService;
+            this.reviewsService = reviewsService;
         }
 
         [HttpGet]
@@ -48,6 +50,18 @@
             }
 
             return this.RedirectToAction("Details", "Movies", new { id = id });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Flag(int id)
+        {
+            if (this.Request.IsAjaxRequest())
+            {
+                this.reviewsService.Flag(id);
+            }
+            
+            return this.Content(string.Empty);
         }
     }
 }

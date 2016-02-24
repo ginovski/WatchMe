@@ -13,6 +13,7 @@
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
+                        "~/Scripts/jquery-migrate-1.3.0.min.js",
                         "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
